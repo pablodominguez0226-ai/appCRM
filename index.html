@@ -1,1108 +1,352 @@
 <!doctype html>
-<html lang="es" class="dark">
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0b0f19">
-  <meta name="description" content="App CRM - Plataforma SaaS moderna para gestión comercial, pipeline y cotizaciones.">
-  <title>App CRM · Workspace Comercial</title>
+  <meta name="theme-color" content="#0f172a">
+  <title>Nexo CRM Ultra</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-
   <style>
     :root {
-      /* Light theme tokens */
       --bg-base: #f8fafc;
       --bg-surface: #ffffff;
-      --bg-card: #ffffff;
-      --bg-elevated: #f1f5f9;
-      --bg-hover: #e2e8f0;
+      --bg-subtle: #f1f5f9;
+      --border: #e2e8f0;
       --text-main: #0f172a;
       --text-muted: #64748b;
-      --text-sub: #94a3b8;
-      --border: #e2e8f0;
-      --border-subtle: #f1f5f9;
       --primary: #4f46e5;
       --primary-hover: #4338ca;
       --primary-light: #eef2ff;
-      --primary-glow: rgba(79, 70, 229, 0.18);
       --accent: #10b981;
       --accent-light: #ecfdf5;
-      --accent-glow: rgba(16, 185, 129, 0.2);
       --warning: #f59e0b;
-      --warning-light: #fffbeb;
+      --warning-light: #fef3c7;
       --danger: #ef4444;
       --danger-light: #fef2f2;
-      --sidebar-bg: #0f172a;
-      --sidebar-text: #e2e8f0;
-      --sidebar-muted: #94a3b8;
-      --sidebar-border: rgba(255, 255, 255, 0.08);
-      --sidebar-active: #4f46e5;
-      --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
-      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-      --glass: rgba(255, 255, 255, 0.85);
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 16px;
-      --radius-xl: 22px;
-      --radius-full: 9999px;
+      --radius-xl: 20px;
+      --radius-lg: 12px;
+      --radius-md: 8px;
+      --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+      --shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
       --sidebar-w: 260px;
-      --topbar-h: 70px;
     }
-
-    html.dark {
-      /* Dark theme tokens */
+    [data-theme="dark"] {
       --bg-base: #090d16;
-      --bg-surface: #0f172a;
-      --bg-card: #131d31;
-      --bg-elevated: #1e293b;
-      --bg-hover: #27354f;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-sub: #64748b;
-      --border: #1e293b;
-      --border-subtle: #131d31;
+      --bg-surface: #111827;
+      --bg-subtle: #1f2937;
+      --border: #374151;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
       --primary: #6366f1;
-      --primary-hover: #818cf8;
+      --primary-hover: #4f46e5;
       --primary-light: rgba(99, 102, 241, 0.15);
-      --primary-glow: rgba(99, 102, 241, 0.25);
       --accent: #10b981;
       --accent-light: rgba(16, 185, 129, 0.15);
-      --accent-glow: rgba(16, 185, 129, 0.25);
       --warning: #f59e0b;
       --warning-light: rgba(245, 158, 11, 0.15);
-      --danger: #f87171;
+      --danger: #ef4444;
       --danger-light: rgba(239, 68, 68, 0.15);
-      --sidebar-bg: #070b14;
-      --sidebar-text: #f8fafc;
-      --sidebar-muted: #64748b;
-      --sidebar-border: rgba(255, 255, 255, 0.05);
-      --sidebar-active: #6366f1;
-      --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
-      --shadow-md: 0 4px 8px -1px rgba(0, 0, 0, 0.4);
-      --shadow-lg: 0 12px 20px -3px rgba(0, 0, 0, 0.45);
-      --shadow-xl: 0 25px 35px -5px rgba(0, 0, 0, 0.55);
-      --glass: rgba(15, 23, 42, 0.85);
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; width: 100%; }
     body {
-      background-color: var(--bg-base);
-      color: var(--text-main);
       font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      font-size: 14px;
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-      overflow: hidden;
-      transition: background-color 0.25s ease, color 0.25s ease;
+      background: var(--bg-base);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
     }
-
-    /* Common interactive styling */
-    button, input, select, textarea { font-family: inherit; font-size: inherit; color: inherit; }
-    button { cursor: pointer; border: none; background: transparent; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    button { cursor: pointer; border: none; background: none; }
     a { color: inherit; text-decoration: none; }
     [hidden] { display: none !important; }
 
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: var(--bg-hover); border-radius: 999px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--text-sub); }
-
-    /* Layout Shell */
-    .app-layout {
+    /* AUTH SCREEN */
+    .auth-wrap {
+      min-height: 100vh;
       display: grid;
-      grid-template-columns: var(--sidebar-w) 1fr;
-      height: 100vh;
-      width: 100vw;
-      overflow: hidden;
+      place-items: center;
+      padding: 24px;
+      background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.12), transparent 400px), var(--bg-base);
     }
-
-    /* Sidebar Design */
-    .sidebar {
-      background: var(--sidebar-bg);
-      border-right: 1px solid var(--sidebar-border);
+    .auth-card {
+      width: min(440px, 100%);
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 40px 32px;
+      box-shadow: var(--shadow-lg);
       display: flex;
       flex-direction: column;
-      height: 100%;
-      padding: 20px 16px;
-      user-select: none;
-      z-index: 40;
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      gap: 20px;
     }
-
+    .auth-brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 20px; }
     .brand-box {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 0 8px 24px 8px;
-      border-bottom: 1px solid var(--sidebar-border);
+      width: 42px; height: 42px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), #8b5cf6);
+      color: white; display: grid; place-items: center; font-size: 20px; font-weight: 900;
     }
-    .brand-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, #6366f1 0%, #10b981 100%);
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-size: 18px;
-      font-weight: 800;
-      box-shadow: 0 0 20px var(--primary-glow);
+    .field-group { display: flex; flex-direction: column; gap: 6px; }
+    .field-group label { font-size: 13px; font-weight: 700; color: var(--text-muted); }
+    .field-wrap {
+      position: relative; display: flex; align-items: center;
+      background: var(--bg-subtle); border: 1px solid var(--border);
+      border-radius: var(--radius-md); overflow: hidden;
     }
-    .brand-name {
-      font-size: 16px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
+    .field-wrap i { position: absolute; left: 14px; color: var(--text-muted); }
+    .field-wrap input, .field-wrap select, .field-wrap textarea {
+      width: 100%; border: none; background: transparent; padding: 12px 14px 12px 42px; outline: none;
     }
-    .brand-version {
-      font-size: 10px;
-      color: var(--accent);
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
+    .auth-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+    .btn-solid {
+      background: var(--primary); color: white; padding: 13px; border-radius: var(--radius-md);
+      font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: background 0.2s;
+    }
+    .btn-solid:hover { background: var(--primary-hover); }
+    .btn-outline {
+      border: 1px solid var(--border); color: var(--text-main); padding: 12px;
+      border-radius: var(--radius-md); font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .error-banner {
+      background: var(--danger-light); color: var(--danger); padding: 10px 14px;
+      border-radius: var(--radius-md); font-size: 13px; font-weight: 600;
     }
 
-    .nav-group {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      flex: 1;
-      overflow-y: auto;
+    /* DASHBOARD SHELL */
+    .app-shell { display: flex; min-height: 100vh; }
+    .sidebar {
+      width: var(--sidebar-w); background: var(--bg-surface); border-right: 1px solid var(--border);
+      display: flex; flex-direction: column; position: fixed; top: 0; bottom: 0; left: 0; z-index: 50;
+      padding: 24px 16px;
     }
-    .nav-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--sidebar-muted);
-      font-weight: 700;
-      padding: 8px 12px 4px 12px;
+    .nav-group { display: flex; flex-direction: column; gap: 4px; margin-top: 28px; flex: 1; }
+    .nav-link {
+      display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-radius: var(--radius-md);
+      font-size: 14px; font-weight: 600; color: var(--text-muted); transition: all 0.15s;
     }
-    .nav-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 12px;
-      border-radius: var(--radius-md);
-      color: var(--sidebar-muted);
-      font-weight: 600;
-      font-size: 13px;
-      transition: all 0.18s ease;
-      position: relative;
+    .nav-link:hover { background: var(--bg-subtle); color: var(--text-main); }
+    .nav-link.active { background: var(--primary-light); color: var(--primary); }
+    .nav-link i { font-size: 17px; }
+    .sidebar-user {
+      display: flex; align-items: center; gap: 12px; padding: 14px 10px 0;
+      border-top: 1px solid var(--border);
     }
-    .nav-item i { font-size: 16px; width: 20px; text-align: center; }
-    .nav-item:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.06);
-    }
-    .nav-item.active {
-      color: #fff;
-      background: var(--sidebar-active);
-      box-shadow: 0 4px 14px var(--primary-glow);
-    }
-    .nav-badge {
-      margin-left: auto;
-      padding: 2px 7px;
-      font-size: 11px;
-      font-weight: 700;
-      border-radius: var(--radius-full);
-      background: rgba(255, 255, 255, 0.15);
-      color: #fff;
-    }
-    .nav-item.active .nav-badge {
-      background: #fff;
-      color: var(--primary);
+    .user-avatar {
+      width: 38px; height: 38px; border-radius: 50%; background: var(--primary-light);
+      color: var(--primary); font-weight: 800; display: grid; place-items: center; font-size: 13px;
     }
 
-    .sidebar-footer {
-      border-top: 1px solid var(--sidebar-border);
-      padding-top: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .user-pill {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 10px;
-      border-radius: var(--radius-md);
-      background: rgba(255, 255, 255, 0.04);
-      color: #fff;
-    }
-    .user-pill .avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: var(--primary);
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      font-size: 12px;
-    }
-    .user-info { flex: 1; min-width: 0; }
-    .user-name { font-weight: 700; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .user-role { font-size: 11px; color: var(--sidebar-muted); }
-
-    .workspace {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      overflow: hidden;
-      background: var(--bg-base);
+    .main-canvas {
+      margin-left: var(--sidebar-w); flex: 1; display: flex; flex-direction: column; min-width: 0;
     }
     .topbar {
-      height: var(--topbar-h);
-      padding: 0 28px;
-      background: var(--glass);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      z-index: 30;
+      height: 70px; background: var(--bg-surface); border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between; padding: 0 32px;
+      position: sticky; top: 0; z-index: 40;
     }
-    .topbar-left {
-      display: flex;
-      align-items: center;
-      gap: 16px;
+    .top-controls { display: flex; align-items: center; gap: 12px; }
+    .kbd-search {
+      display: flex; align-items: center; gap: 10px; background: var(--bg-subtle);
+      border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px; font-size: 13px;
+      color: var(--text-muted); cursor: pointer; width: 260px;
     }
-    .topbar-title {
-      font-size: 18px;
-      font-weight: 800;
-      letter-spacing: -0.4px;
-      color: var(--text-main);
+    .kbd-badge {
+      background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px;
+      padding: 2px 6px; font-size: 11px; font-weight: 700; margin-left: auto;
     }
-    .topbar-badge {
-      padding: 3px 8px;
-      border-radius: var(--radius-full);
-      font-size: 11px;
-      font-weight: 700;
-      background: var(--primary-light);
-      color: var(--primary);
+    .btn-circle {
+      width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border);
+      display: grid; place-items: center; color: var(--text-muted); background: var(--bg-surface);
     }
 
-    .topbar-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .content-area { padding: 32px; flex: 1; }
+    .section-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; gap: 16px; }
+    .section-title h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
+    .section-title p { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+    .actions-row { display: flex; gap: 10px; flex-wrap: wrap; }
 
-    .btn-command-shortcut {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 7px 14px;
-      border-radius: var(--radius-full);
-      color: var(--text-muted);
-      font-size: 12px;
-      font-weight: 600;
-      transition: all 0.2s ease;
+    /* STATS GRID */
+    .metrics-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 28px; }
+    .metric-box {
+      background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 20px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 8px;
     }
-    .btn-command-shortcut:hover {
-      border-color: var(--primary);
-      color: var(--text-main);
-      box-shadow: var(--shadow-sm);
-    }
-    .kbd-tag {
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 10px;
-      font-weight: 700;
-      font-family: monospace;
-    }
+    .metric-meta { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+    .metric-num { font-size: 28px; font-weight: 800; letter-spacing: -1px; }
 
-    .top-action-btn {
-      width: 38px;
-      height: 38px;
-      border-radius: var(--radius-md);
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      display: grid;
-      place-items: center;
-      font-size: 15px;
-      transition: all 0.18s ease;
-      position: relative;
-    }
-    .top-action-btn:hover {
-      color: var(--text-main);
-      background: var(--bg-hover);
-      border-color: var(--text-sub);
-    }
-    .top-badge-dot {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 2px solid var(--bg-card);
-    }
-
-    /* Content Area */
-    .main-viewport {
-      flex: 1;
-      overflow-y: auto;
-      padding: 28px;
-      scroll-behavior: smooth;
-    }
-
-    /* Buttons & Form Controls */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 9px 16px;
-      border-radius: var(--radius-md);
-      font-weight: 700;
-      font-size: 13px;
-      transition: all 0.18s ease;
-      white-space: nowrap;
-    }
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-      box-shadow: 0 2px 8px var(--primary-glow);
-    }
-    .btn-primary:hover {
-      background: var(--primary-hover);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 14px var(--primary-glow);
-    }
-    .btn-accent {
-      background: var(--accent);
-      color: #fff;
-      box-shadow: 0 2px 8px var(--accent-glow);
-    }
-    .btn-accent:hover {
-      opacity: 0.92;
-      transform: translateY(-1px);
-    }
-    .btn-secondary {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      color: var(--text-main);
-    }
-    .btn-secondary:hover {
-      background: var(--bg-hover);
-    }
-    .btn-sm {
-      padding: 6px 12px;
-      font-size: 12px;
-      border-radius: var(--radius-sm);
-    }
-    .btn-icon-only {
-      width: 32px;
-      height: 32px;
-      padding: 0;
-      border-radius: var(--radius-sm);
-    }
-
-    /* Cards & Containers */
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      box-shadow: var(--shadow-sm);
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    .card:hover {
-      border-color: rgba(99, 102, 241, 0.25);
-    }
-
-    /* Metric Grid */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-      margin-bottom: 24px;
-    }
-    .stat-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      position: relative;
-      overflow: hidden;
-    }
-    .stat-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--stat-bar, var(--primary));
-    }
-    .stat-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: var(--text-muted);
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .stat-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: var(--radius-md);
-      background: var(--stat-bg, var(--primary-light));
-      color: var(--stat-color, var(--primary));
-      display: grid;
-      place-items: center;
-      font-size: 16px;
-    }
-    .stat-value {
-      font-size: 28px;
-      font-weight: 800;
-      margin: 12px 0 4px 0;
-      letter-spacing: -1px;
-      color: var(--text-main);
-    }
-    .stat-desc {
-      font-size: 12px;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .stat-trend {
-      font-weight: 700;
-      color: var(--accent);
-    }
-
+    /* KANBAN BOARD */
     .kanban-board {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(280px, 1fr));
-      gap: 16px;
-      overflow-x: auto;
-      padding-bottom: 20px;
-      height: calc(100vh - 230px);
-      min-height: 480px;
+      display: grid; grid-template-columns: repeat(5, minmax(280px, 1fr)); gap: 16px;
+      overflow-x: auto; padding-bottom: 20px; align-items: flex-start;
     }
     .kanban-col {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      transition: background 0.2s ease, border-color 0.2s ease;
+      background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 16px; display: flex; flex-direction: column; gap: 12px; min-height: 580px;
     }
-    .kanban-col.dragover {
-      background: var(--primary-light);
-      border-color: var(--primary);
+    .kanban-header { display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 14px; }
+    .deal-card {
+      background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md);
+      padding: 16px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 10px;
+      cursor: grab; transition: transform 0.15s, box-shadow 0.15s;
     }
-    .kanban-col-head {
-      padding: 16px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-    .col-title-group {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .col-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--col-color, var(--primary));
-    }
-    .col-name {
-      font-weight: 800;
-      font-size: 13px;
-    }
-    .col-count {
-      background: var(--bg-elevated);
-      color: var(--text-muted);
-      font-size: 11px;
-      font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 999px;
-    }
-    .col-total {
-      font-size: 12px;
-      font-weight: 800;
-      color: var(--text-muted);
-    }
-    .kanban-cards-area {
-      flex: 1;
-      overflow-y: auto;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .deal-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .deal-card h4 { font-size: 14px; font-weight: 700; line-height: 1.3; }
+    .deal-val { font-size: 16px; font-weight: 800; color: var(--primary); }
 
-    .deal-item {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 14px;
-      cursor: grab;
-      user-select: none;
-      box-shadow: var(--shadow-sm);
-      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-    }
-    .deal-item:active { cursor: grabbing; }
-    .deal-item.dragging {
-      opacity: 0.4;
-      transform: scale(0.96) rotate(1deg);
-    }
-    .deal-item:hover {
-      border-color: var(--primary);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-2px);
-    }
-    .deal-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 6px;
-      margin-bottom: 6px;
-    }
-    .deal-title {
-      font-weight: 700;
-      font-size: 13px;
-      line-height: 1.3;
-      color: var(--text-main);
-    }
-    .deal-company {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .deal-value {
-      font-size: 16px;
-      font-weight: 800;
-      color: var(--text-main);
-      letter-spacing: -0.3px;
-      margin-bottom: 10px;
-    }
-    .deal-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid var(--border);
-      padding-top: 10px;
-      font-size: 11px;
-    }
-    .deal-owner {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-    .deal-stale-tag {
-      font-size: 10px;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 4px;
-      background: var(--warning-light);
-      color: var(--warning);
-    }
-    .deal-stale-tag.urgent {
-      background: var(--danger-light);
-      color: var(--danger);
-    }
-
+    /* DATA TABLES */
     .table-container {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
+      background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      box-shadow: var(--shadow); overflow: hidden;
     }
-    .toolbar-bar {
-      padding: 16px 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th {
+      background: var(--bg-subtle); padding: 14px 20px; font-size: 12px; font-weight: 700;
+      color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;
     }
-    .search-input-wrap {
-      position: relative;
-      flex: 1;
-      min-width: 240px;
-      max-width: 400px;
-    }
-    .search-input-wrap i {
-      position: absolute;
-      left: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-sub);
-    }
-    .search-input-wrap input {
-      width: 100%;
-      height: 38px;
-      padding: 0 12px 0 36px;
-      background: var(--bg-base);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-full);
-      color: var(--text-main);
-      font-size: 13px;
-      transition: all 0.18s ease;
-    }
-    .search-input-wrap input:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px var(--primary-glow);
-      background: var(--bg-surface);
-    }
-    .filter-select {
-      height: 38px;
-      padding: 0 14px;
-      background: var(--bg-base);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      color: var(--text-main);
-      font-size: 12px;
-      font-weight: 600;
-      outline: none;
-    }
+    td { padding: 16px 20px; border-top: 1px solid var(--border); font-size: 14px; }
+    tr:hover td { background: var(--bg-subtle); }
 
-    .modern-table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-    }
-    .modern-table th {
-      background: var(--bg-elevated);
-      color: var(--text-muted);
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 12px 18px;
-      border-bottom: 1px solid var(--border);
-    }
-    .modern-table td {
-      padding: 14px 18px;
-      border-bottom: 1px solid var(--border);
-      color: var(--text-main);
-      font-size: 13px;
-      vertical-align: middle;
-    }
-    .modern-table tbody tr {
-      transition: background 0.15s ease;
-    }
-    .modern-table tbody tr:hover {
-      background: var(--bg-elevated);
-    }
-
-    /* Badges */
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 3px 9px;
-      border-radius: var(--radius-full);
-      font-size: 11px;
-      font-weight: 700;
-    }
-    .badge-primary { background: var(--primary-light); color: var(--primary); }
-    .badge-accent { background: var(--accent-light); color: var(--accent); }
-    .badge-warning { background: var(--warning-light); color: var(--warning); }
-    .badge-danger { background: var(--danger-light); color: var(--danger); }
-    .badge-neutral { background: var(--bg-hover); color: var(--text-muted); }
-
-    .command-palette-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(8px);
-      z-index: 100;
-      display: grid;
-      place-items: center;
-      padding: 16px;
-      animation: fadeIn 0.15s ease;
-    }
-    .command-dialog {
-      width: min(580px, 100%);
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-xl);
-      overflow: hidden;
-      animation: scaleUp 0.18s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .command-search-header {
-      padding: 16px 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .command-search-header i {
-      font-size: 18px;
-      color: var(--primary);
-    }
-    .command-input {
-      flex: 1;
-      border: none;
-      background: transparent;
-      outline: none;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text-main);
-    }
-    .command-list {
-      max-height: 340px;
-      overflow-y: auto;
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .command-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 14px;
-      border-radius: var(--radius-md);
-      color: var(--text-muted);
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 600;
-      transition: all 0.15s ease;
-    }
-    .command-item:hover, .command-item.focused {
-      background: var(--primary-light);
-      color: var(--primary);
-    }
-    .command-item i { font-size: 16px; width: 20px; text-align: center; }
-    .command-item-action { margin-left: auto; font-size: 11px; font-weight: 700; color: var(--text-sub); }
-    .command-footer {
-      background: var(--bg-elevated);
-      padding: 10px 20px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: var(--text-muted);
-      font-size: 11px;
-    }
-
-    /* Modal windows */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(8px);
-      z-index: 90;
-      display: grid;
-      place-items: center;
-      padding: 16px;
-      overflow-y: auto;
+    /* MODAL */
+    .modal-veil {
+      position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px);
+      z-index: 100; display: grid; place-items: center; padding: 20px;
     }
     .modal-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-xl);
-      width: min(600px, 100%);
-      max-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      animation: scaleUp 0.18s ease;
-      overflow: hidden;
+      width: min(580px, 100%); background: var(--bg-surface); border: 1px solid var(--border);
+      border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); overflow: hidden; display: flex; flex-direction: column;
     }
-    .modal-box.wide { width: min(840px, 100%); }
-    .modal-header {
-      padding: 18px 24px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .modal-title { font-size: 16px; font-weight: 800; color: var(--text-main); }
-    .modal-body {
-      padding: 24px;
-      overflow-y: auto;
-      flex: 1;
-    }
-    .modal-footer {
-      padding: 16px 24px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 10px;
-      background: var(--bg-surface);
-    }
+    .modal-top { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid var(--border); }
+    .modal-body { padding: 24px; display: flex; flex-direction: column; gap: 16px; max-height: 75vh; overflow-y: auto; }
+    .modal-bottom { padding: 16px 24px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 10px; background: var(--bg-subtle); }
 
-    /* Form Fields */
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+    /* COMMAND PALETTE */
+    .cmd-veil {
+      position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(6px);
+      z-index: 150; display: grid; place-items: start center; padding-top: 12vh;
     }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+    .cmd-box {
+      width: min(560px, 94vw); background: var(--bg-surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); overflow: hidden;
     }
-    .form-group.col-span-2 { grid-column: span 2; }
-    .form-label {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--text-muted);
+    .cmd-input-wrap {
+      display: flex; align-items: center; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--border);
     }
-    .form-control {
-      height: 40px;
-      padding: 0 12px;
-      background: var(--bg-base);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      color: var(--text-main);
-      font-size: 13px;
-      transition: all 0.18s ease;
+    .cmd-input-wrap input { width: 100%; border: none; outline: none; background: transparent; font-size: 16px; }
+    .cmd-list { padding: 10px; max-height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; }
+    .cmd-opt {
+      display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: var(--radius-md);
+      font-size: 14px; font-weight: 600; cursor: pointer;
     }
-    textarea.form-control {
-      height: 90px;
-      padding: 10px 12px;
-      resize: vertical;
-    }
-    .form-control:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px var(--primary-glow);
-      background: var(--bg-surface);
-    }
+    .cmd-opt:hover { background: var(--primary-light); color: var(--primary); }
 
-    /* Toast Notifications */
-    .toast-center {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      z-index: 200;
-      pointer-events: none;
-    }
+    /* TOASTS */
+    .toast-center { position: fixed; bottom: 24px; right: 24px; z-index: 200; display: flex; flex-direction: column; gap: 10px; }
     .toast-msg {
-      background: var(--sidebar-bg);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #fff;
-      padding: 12px 18px;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-xl);
-      font-size: 13px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      animation: slideLeft 0.2s ease;
-      pointer-events: auto;
+      background: var(--text-main); color: var(--bg-surface); padding: 12px 20px; border-radius: var(--radius-md);
+      font-size: 13px; font-weight: 700; box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 10px;
     }
-    .toast-msg i { color: var(--accent); font-size: 16px; }
-    .toast-msg.error i { color: var(--danger); }
-
-    .login-wrapper {
-      min-height: 100vh;
-      width: 100vw;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
-                  radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 40%),
-                  var(--bg-base);
-    }
-    .login-card-pro {
-      width: min(440px, 100%);
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: 36px 32px;
-      box-shadow: var(--shadow-xl);
-    }
-    .login-brand-header {
-      text-align: center;
-      margin-bottom: 28px;
-    }
-    .login-logo-circle {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #6366f1 0%, #10b981 100%);
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-size: 24px;
-      font-weight: 800;
-      margin: 0 auto 14px auto;
-      box-shadow: 0 0 24px var(--primary-glow);
-    }
-
-    /* Animations */
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes scaleUp { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
-    @keyframes slideLeft { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
-
-    /* Responsive Mobile Handling */
     @media (max-width: 900px) {
-      .app-layout { grid-template-columns: 1fr; }
-      .sidebar {
-        position: fixed;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 280px;
-        transform: translateX(-100%);
-      }
-      .app-layout.drawer-open .sidebar {
-        transform: translateX(0);
-      }
-      .drawer-dimmer {
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.6);
-        z-index: 35;
-      }
-      .btn-command-shortcut { display: none; }
-      .kanban-board { grid-template-columns: repeat(5, 270px); }
+      .sidebar { display: none; }
+      .main-canvas { margin-left: 0; }
     }
   </style>
 </head>
 <body>
 
-  <div id="loginScreen" class="login-wrapper">
-    <div class="login-card-pro">
-      <div class="login-brand-header">
-        <div class="login-logo-circle">N</div>
-        <h2 style="font-size: 22px; font-weight: 800; letter-spacing: -0.5px;">Nexo CRM Ultra</h2>
-        <p style="color: var(--text-muted); font-size: 13px; margin-top: 4px;">Plataforma SaaS privada y autónoma</p>
+  <!-- LOGIN SECTION -->
+  <section class="auth-wrap" id="authView">
+    <div class="auth-card">
+      <div class="auth-brand">
+        <div class="brand-box">N</div>
+        <span>Nexo CRM Ultra</span>
       </div>
-      <form id="loginForm" style="display: flex; flex-direction: column; gap: 16px;">
-        <div class="form-group">
-          <label class="form-label" for="loginEmail">Email Corporativo</label>
-          <input id="loginEmail" class="form-control" type="email" placeholder="vos@tuempresa.com" required value="demo@nexo.local">
+      <div>
+        <h2 style="font-size: 22px; font-weight: 800;">Iniciar Sesión</h2>
+        <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Acceso administrativo vinculado a Google Sheets.</p>
+      </div>
+      <form id="authForm" style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="field-group">
+          <label>Email Corporativo</label>
+          <div class="field-wrap">
+            <i class="bi bi-envelope"></i>
+            <input id="loginEmail" type="email" required placeholder="sistemas0226@gmail.com" autocomplete="username">
+          </div>
         </div>
-        <div class="form-group">
-          <label class="form-label" for="loginPassword">Contraseña</label>
-          <input id="loginPassword" class="form-control" type="password" placeholder="••••••••" required value="demostracion">
+        <div class="field-group">
+          <label>Contraseña</label>
+          <div class="field-wrap">
+            <i class="bi bi-shield-lock"></i>
+            <input id="loginPassword" type="password" required placeholder="••••••••" autocomplete="current-password">
+          </div>
         </div>
-        <p id="loginError" style="color: var(--danger); font-size: 12px; font-weight: 700; min-height: 18px;"></p>
-        <button type="submit" class="btn btn-primary" style="width: 100%; height: 42px;">
-          <span>Entrar al Workspace</span> <i class="bi bi-arrow-right"></i>
-        </button>
-        <button type="button" id="btnQuickDemo" class="btn btn-secondary" style="width: 100%;">
-          <i class="bi bi-stars"></i> Probar Modo Demo Completo
-        </button>
+        <div class="error-banner" id="authError" hidden></div>
+        <div class="auth-actions">
+          <button class="btn-solid" type="submit">Entrar al Workspace <i class="bi bi-arrow-right"></i></button>
+          <button class="btn-outline" type="button" id="btnDemoLogin"><i class="bi bi-stars"></i> Probar Modo Demo Completo</button>
+        </div>
       </form>
     </div>
-  </div>
+  </section>
 
-  <div id="appShell" class="app-layout" hidden>
-    <div id="drawerDimmer" class="drawer-dimmer" hidden></div>
+  <!-- DASHBOARD SHELL -->
+  <div class="app-shell" id="appShell" hidden>
     <aside class="sidebar">
-      <div class="brand-box">
-        <div class="brand-logo">N</div>
-        <div class="brand-name">
-          <span>Nexo CRM</span>
-          <span class="brand-version">PRO v3.0</span>
-        </div>
+      <div class="auth-brand">
+        <div class="brand-box">N</div>
+        <span>Nexo CRM</span>
       </div>
-      <div class="nav-group">
-        <span class="nav-label">General</span>
-        <button class="nav-item active" data-view="dashboard"><i class="bi bi-grid-1x2"></i> Resumen</button>
-        <button class="nav-item" data-view="pipeline"><i class="bi bi-kanban"></i> Embudo Kanban</button>
-        <button class="nav-item" data-view="contacts"><i class="bi bi-people"></i> Contactos</button>
-        <span class="nav-label">Operaciones</span>
-        <button class="nav-item" data-view="followups"><i class="bi bi-calendar2-check"></i> Seguimientos <span class="nav-badge" id="sidebarBadge">0</span></button>
-        <button class="nav-item" data-view="conversations"><i class="bi bi-chat-left-dots"></i> Conversaciones</button>
-        <button class="nav-item" data-view="quotes"><i class="bi bi-receipt"></i> Cotizaciones</button>
-        <button class="nav-item" data-view="sellers"><i class="bi bi-bar-chart-line"></i> Vendedores</button>
-      </div>
-      <div class="sidebar-footer">
-        <div class="user-pill">
-          <div class="avatar" id="userAvatar">TC</div>
-          <div class="user-info">
-            <div class="user-name" id="userName">Usuario</div>
-            <div class="user-role" id="userRole">Administrador</div>
-          </div>
-          <button id="btnLogout" title="Cerrar sesión" style="color: var(--sidebar-muted); font-size: 16px;"><i class="bi bi-box-arrow-right"></i></button>
+      <nav class="nav-group">
+        <button class="nav-link active" data-view="dashboard"><i class="bi bi-speedometer2"></i> Resumen</button>
+        <button class="nav-link" data-view="pipeline"><i class="bi bi-kanban"></i> Pipeline de Ventas</button>
+        <button class="nav-link" data-view="contacts"><i class="bi bi-people"></i> Contactos</button>
+        <button class="nav-link" data-view="followups"><i class="bi bi-calendar-check"></i> Seguimientos</button>
+        <button class="nav-link" data-view="quotes"><i class="bi bi-receipt"></i> Cotizaciones</button>
+      </nav>
+      <div class="sidebar-user">
+        <div class="user-avatar" id="avatarLetter">PD</div>
+        <div style="flex: 1; min-width: 0;">
+          <div style="font-size: 13px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" id="userName">Usuario</div>
+          <div style="font-size: 11px; color: var(--text-muted);" id="userRole">Administrador</div>
         </div>
+        <button class="btn-circle" id="btnLogout" title="Cerrar sesión"><i class="bi bi-box-arrow-right"></i></button>
       </div>
     </aside>
 
-    <main class="workspace">
+    <main class="main-canvas">
       <header class="topbar">
-        <div class="topbar-left">
-          <button id="btnMenuToggle" class="top-action-btn" style="display: none;"><i class="bi bi-list"></i></button>
-          <h1 class="topbar-title" id="pageTitle">Resumen</h1>
-          <span class="topbar-badge" id="liveClock">Hoy</span>
+        <div class="kbd-search" id="btnOpenCmd">
+          <i class="bi bi-search"></i>
+          <span>Buscar o ejecutar...</span>
+          <span class="kbd-badge">Ctrl K</span>
         </div>
-        <div class="topbar-right">
-          <button id="btnOpenCommandPalette" class="btn-command-shortcut">
-            <i class="bi bi-search"></i>
-            <span>Búsqueda rápida...</span>
-            <span class="kbd-tag">Ctrl K</span>
-          </button>
-          <!-- Dark Mode Toggle Button -->
-          <button id="btnThemeToggle" class="top-action-btn" title="Cambiar Tema Claro/Oscuro">
-            <i class="bi bi-sun" id="themeIcon"></i>
-          </button>
-          <button id="btnExportCSV" class="top-action-btn" title="Descargar Contactos (CSV)">
-            <i class="bi bi-download"></i>
-          </button>
-          <button id="btnQuickCreate" class="btn btn-primary btn-sm">
-            <i class="bi bi-plus-lg"></i> <span>Nuevo</span>
-          </button>
+        <div class="top-controls">
+          <button class="btn-circle" id="btnToggleTheme" title="Cambiar tema"><i class="bi bi-moon-stars"></i></button>
         </div>
       </header>
-
-      <section class="main-viewport" id="viewportArea">
-        <!-- Rendered view goes here -->
-      </section>
+      <div class="content-area" id="mainContent"></div>
     </main>
   </div>
 
-  <div id="commandPalette" class="command-palette-backdrop" hidden>
-    <div class="command-dialog">
-      <div class="command-search-header">
-        <i class="bi bi-terminal"></i>
-        <input id="commandInput" class="command-input" type="text" placeholder="Escribe un comando o busca contacto, oportunidad..." autocomplete="off">
-        <span class="kbd-tag">ESC</span>
+  <!-- COMMAND PALETTE -->
+  <div class="cmd-veil" id="cmdPalette" hidden>
+    <div class="cmd-box">
+      <div class="cmd-input-wrap">
+        <i class="bi bi-search"></i>
+        <input id="cmdSearch" placeholder="Escribe un comando o navega..." autofocus>
       </div>
-      <div class="command-list" id="commandList">
-        <!-- Dynamic items -->
-      </div>
-      <div class="command-footer">
-        <span>Navegar con ↑ ↓ y Enter</span>
-        <span>Acciones Rápidas</span>
+      <div class="cmd-list" id="cmdList">
+        <div class="cmd-opt" data-act="nav-dashboard"><i class="bi bi-speedometer2"></i> Ir al Resumen</div>
+        <div class="cmd-opt" data-act="nav-pipeline"><i class="bi bi-kanban"></i> Ir al Pipeline de Ventas</div>
+        <div class="cmd-opt" data-act="nav-contacts"><i class="bi bi-people"></i> Ir a Contactos</div>
+        <div class="cmd-opt" data-act="modal-contact"><i class="bi bi-person-plus"></i> Crear Nuevo Contacto</div>
+        <div class="cmd-opt" data-act="modal-opp"><i class="bi bi-plus-circle"></i> Crear Nueva Oportunidad</div>
       </div>
     </div>
   </div>
@@ -1111,1113 +355,354 @@
   <div id="toastSlot" class="toast-center"></div>
 
   <script>
-    /* Nexo CRM Unified Logic Core */
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx1odNoI5JskikYcPeaobBt6Ki3F7SA3IAEOL4DaNBGzLymuE9bwICslv5NHTQWj0aq/exec';
-    const IS_REMOTE = /^https:\/\/script\.google\.com\/macros\/s\/.+\/exec/.test(APPS_SCRIPT_URL);
-
     const STAGES = ['Nuevo', 'Contactado', 'Propuesta', 'Negociación', 'Ganado'];
-    const STAGE_COLORS = {
-      'Nuevo': '#6366f1',
-      'Contactado': '#38bdf8',
-      'Propuesta': '#fbbf24',
-      'Negociación': '#f97316',
-      'Ganado': '#10b981',
-      'Perdido': '#64748b'
-    };
 
     const state = {
       theme: localStorage.getItem('nexo_theme') || 'dark',
       view: 'dashboard',
+      token: sessionStorage.getItem('nexo_token') || '',
       user: null,
-      search: '',
-      filter: 'Todos',
       contacts: [],
       opportunities: [],
       followUps: [],
-      conversations: [],
       quotes: [],
-      sellers: [],
-      settings: { companyName: 'Nexo Studio', staleDays: 5 }
+      demo: false
     };
 
-    // DOM Utilities
-    const $ = (s, r = document) => r.querySelector(s);
-    const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+    const $ = (s, r = document) => r.querySelector(s);     const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
-    function escapeHtml(str) {
-      return String(str ?? '').replace(/[&<>"']/g, m => ({
-        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
-      })[m]);
+    function applyTheme() {
+      document.documentElement.setAttribute('data-theme', state.theme);
+      $('#btnToggleTheme i').className = state.theme === 'dark' ? 'bi bi-sun' : 'bi bi-moon-stars';
+      localStorage.setItem('nexo_theme', state.theme);
     }
 
-    function formatCurrency(val, cur = 'ARS') {
-      const num = Number(val) || 0;
-      return new Intl.NumberFormat('es-AR', { style: 'currency', currency: cur, maximumFractionDigits: 0 }).format(num);
-    }
-
-    function formatDate(val) {
-      if (!val) return 'Sin fecha';
-      const d = new Date(val.length === 10 ? val + 'T12:00:00' : val);
-      return Number.isNaN(d.getTime()) ? 'Sin fecha' : new Intl.DateTimeFormat('es-AR', { day: '2-digit', month: 'short' }).format(d);
-    }
-
-    function daysSince(val) {
-      if (!val) return 0;
-      const d = new Date(val);
-      return Math.max(0, Math.floor((Date.now() - d.getTime()) / (1000 * 60 * 60 * 24)));
-    }
-
-    function toast(title, isError = false) {
+    function toast(text) {
       const el = document.createElement('div');
-      el.className = `toast-msg ${isError ? 'error' : ''}`;
-      el.innerHTML = `<i class="bi bi-${isError ? 'exclamation-octagon' : 'check2-circle'}"></i> <span>${escapeHtml(title)}</span>`;
+      el.className = 'toast-msg';
+      el.innerHTML = `<i class="bi bi-check2-circle"></i> <span>${text}</span>`;
       $('#toastSlot').appendChild(el);
-      setTimeout(() => el.remove(), 3200);
+      setTimeout(() => el.remove(), 3500);
     }
 
-    function applyTheme(theme) {
-      state.theme = theme;
-      localStorage.setItem('nexo_theme', theme);
-      if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
-        $('#themeIcon').className = 'bi bi-sun';
-      } else {
-        document.documentElement.classList.remove('dark');
-        $('#themeIcon').className = 'bi bi-moon-stars';
+    async function api(action, payload = {}) {
+      if (state.demo) return demoBackend(action, payload);
+      let res;
+      try {
+        res = await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          redirect: 'follow',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ action, token: state.token, ...payload })
+        });
+      } catch (err) {
+        throw new Error('Error al conectar con el servidor Apps Script.');
       }
+      const raw = await res.text();
+      let parsed;
+      try { parsed = JSON.parse(raw); }
+      catch (_) { throw new Error('Respuesta inválida recibida del servidor.'); }
+      if (!parsed.ok) throw new Error(parsed.error || 'Operación rechazada.');
+      return parsed;
     }
 
-    function getSeedData() {
-      const now = Date.now();
-      return {
-        user: { id: 'USR-1', name: 'Martina Rossi', email: 'martina@nexo.local', role: 'admin' },
-        sellers: [
-          { id: 'USR-1', name: 'Martina Rossi', email: 'martina@nexo.local', role: 'admin' },
-          { id: 'USR-2', name: 'Facundo Vega', email: 'facundo@nexo.local', role: 'seller' },
-          { id: 'USR-3', name: 'Carla Morales', email: 'carla@nexo.local', role: 'seller' }
-        ],
-        contacts: [
-          { id: 'C-1', name: 'Alejandro Ramos', company: 'Nova Retail Corp', email: 'aramos@novaretail.com', phone: '+54 11 4400 9921', status: 'Cliente', source: 'LinkedIn', owner: 'Martina Rossi', updatedAt: new Date(now - 86400000).toISOString() },
-          { id: 'C-2', name: 'Beatriz Silva', company: 'Logística Austral', email: 'bsilva@austral.ar', phone: '+54 261 422 1109', status: 'Prospecto', source: 'Web Inbound', owner: 'Facundo Vega', updatedAt: new Date(now - 86400000 * 4).toISOString() },
-          { id: 'C-3', name: 'Gonzalo Méndez', company: 'Kroma Brand Lab', email: 'gmendez@kromalab.io', phone: '+54 351 555 8762', status: 'Prospecto', source: 'Referido', owner: 'Carla Morales', updatedAt: new Date(now - 86400000 * 8).toISOString() },
-          { id: 'C-4', name: 'Lorena Fuentes', company: 'Valle Solar', email: 'lfuentes@vallesolar.com', phone: '+54 11 6789 2210', status: 'Cliente', source: 'Evento B2B', owner: 'Martina Rossi', updatedAt: new Date(now - 86400000 * 2).toISOString() }
-        ],
-        opportunities: [
-          { id: 'O-1', title: 'Implementación ERP SaaS', contactId: 'C-1', value: 4200000, stage: 'Propuesta', probability: 60, owner: 'Martina Rossi', expectedClose: '2026-10-15', lastActivity: new Date(now - 86400000 * 2).toISOString() },
-          { id: 'O-2', title: 'Módulo de Rutas Logísticas', contactId: 'C-2', value: 2800000, stage: 'Nuevo', probability: 20, owner: 'Facundo Vega', expectedClose: '2026-11-01', lastActivity: new Date(now - 86400000 * 6).toISOString() },
-          { id: 'O-3', title: 'Rediseño Portal y Apps', contactId: 'C-3', value: 1950000, stage: 'Negociación', probability: 80, owner: 'Carla Morales', expectedClose: '2026-09-30', lastActivity: new Date(now - 86400000 * 1).toISOString() },
-          { id: 'O-4', title: 'Capacitación Enterprise', contactId: 'C-4', value: 950000, stage: 'Ganado', probability: 100, owner: 'Martina Rossi', expectedClose: '2026-09-10', lastActivity: new Date(now - 86400000 * 12).toISOString() }
-        ],
-        followUps: [
-          { id: 'F-1', title: 'Presentación de propuesta técnica', dueAt: new Date(now + 3600000 * 5).toISOString(), type: 'Reunión', owner: 'Martina Rossi', status: 'Pendiente', contactId: 'C-1' },
-          { id: 'F-2', title: 'Llamada de seguimiento propuesta', dueAt: new Date(now - 3600000 * 4).toISOString(), type: 'Llamada', owner: 'Facundo Vega', status: 'Pendiente', contactId: 'C-2' },
-          { id: 'F-3', title: 'Enviar contrato firmado', dueAt: new Date(now + 86400000).toISOString(), type: 'WhatsApp', owner: 'Carla Morales', status: 'Pendiente', contactId: 'C-3' }
-        ],
-        conversations: [
-          { id: 'CONV-1', contactId: 'C-1', channel: 'Reunión', direction: 'Entrante', summary: 'Revisión final de presupuesto. Solicitan incluir 3 licencias extra.', owner: 'Martina Rossi', createdAt: new Date(now - 86400000).toISOString() },
-          { id: 'CONV-2', contactId: 'C-2', channel: 'WhatsApp', direction: 'Saliente', summary: 'Se envió ficha técnica actualizada y cronograma tentativo.', owner: 'Facundo Vega', createdAt: new Date(now - 86400000 * 3).toISOString() }
-        ],
-        quotes: [
-          {
-            id: 'Q-1', quoteNumber: 'COT-2026-001', contactId: 'C-1', subtotal: 4200000, taxRate: 21, taxAmount: 882000, total: 5082000, currency: 'ARS',
-            status: 'Enviada', validUntil: '2026-10-20', itemsJson: JSON.stringify([{ description: 'Licencia SaaS Anual', quantity: 1, price: 3200000, total: 3200000 }, { description: 'Onboarding y Setup', quantity: 1, price: 1000000, total: 1000000 }]),
-            notes: 'Condición de pago: 50% anticipo y 50% contra entrega.', owner: 'Martina Rossi', createdAt: new Date(now - 86400000 * 2).toISOString()
-          }
-        ]
-      };
-    }
-
-    function loadLocalData() {
-      const saved = localStorage.getItem('nexo_ultra_data');
-      const data = saved ? JSON.parse(saved) : getSeedData();
-      Object.assign(state, data);
-    }
-
-    function saveLocalData() {
-      localStorage.setItem('nexo_ultra_data', JSON.stringify({
-        contacts: state.contacts,
-        opportunities: state.opportunities,
-        followUps: state.followUps,
-        conversations: state.conversations,
-        quotes: state.quotes,
-        sellers: state.sellers,
-        settings: state.settings,
-        user: state.user
-      }));
+    async function loadBackendData() {
+      const data = await api('bootstrap');
+      state.user = data.user || state.user;
+      state.contacts = data.contacts || [];
+      state.opportunities = data.opportunities || [];
+      state.followUps = data.followUps || [];
+      state.quotes = data.quotes || [];
     }
 
     function renderDashboard() {
-      const openDeals = state.opportunities.filter(o => !['Ganado', 'Perdido'].includes(o.stage));
-      const wonDeals = state.opportunities.filter(o => o.stage === 'Ganado');
-      const totalPipeline = openDeals.reduce((sum, o) => sum + (Number(o.value) || 0), 0);
-      const totalWon = wonDeals.reduce((sum, o) => sum + (Number(o.value) || 0), 0);
-      const overdueTasks = state.followUps.filter(f => f.status !== 'Completado' && new Date(f.dueAt).getTime() < Date.now());
-
+      const totalOppVal = state.opportunities.reduce((acc, x) => acc + Number(x.value || 0), 0);
+      const wonDeals = state.opportunities.filter(x => x.stage === 'Ganado');
+      const wonVal = wonDeals.reduce((acc, x) => acc + Number(x.value || 0), 0);
       return `
-      <div class="stats-grid">
-        <div class="stat-card" style="--stat-bar: #6366f1; --stat-bg: var(--primary-light); --stat-color: var(--primary);">
-          <div class="stat-header"><span>Pipeline Abierto</span><div class="stat-icon"><i class="bi bi-funnel"></i></div></div>
-          <div class="stat-value">${formatCurrency(totalPipeline)}</div>
-          <div class="stat-desc"><span class="stat-trend">${openDeals.length}</span> negocios en negociación activa</div>
-        </div>
-        <div class="stat-card" style="--stat-bar: #10b981; --stat-bg: var(--accent-light); --stat-color: var(--accent);">
-          <div class="stat-header"><span>Ventas Ganadas</span><div class="stat-icon"><i class="bi bi-trophy"></i></div></div>
-          <div class="stat-value">${formatCurrency(totalWon)}</div>
-          <div class="stat-desc"><span class="stat-trend" style="color:var(--accent);">+18%</span> vs mes anterior</div>
-        </div>
-        <div class="stat-card" style="--stat-bar: #f59e0b; --stat-bg: var(--warning-light); --stat-color: var(--warning);">
-          <div class="stat-header"><span>Seguimientos Pendientes</span><div class="stat-icon"><i class="bi bi-calendar-event"></i></div></div>
-          <div class="stat-value">${state.followUps.filter(f => f.status !== 'Completado').length}</div>
-          <div class="stat-desc" style="color: ${overdueTasks.length ? 'var(--danger)' : 'var(--text-muted)'};">
-            ${overdueTasks.length ? `${overdueTasks.length} vencidos que requieren atención` : 'Todo al día'}
+        <div class="section-head">
+          <div class="section-title">
+            <h1>Hola, ${(state.user?.name || 'Usuario').split(' ')[0]}</h1>
+            <p>Estado operativo y comercial actualizado.</p>
+          </div>
+          <div class="actions-row">
+            <button class="btn-solid" onclick="openContactModal()"><i class="bi bi-person-plus"></i> Contacto</button>
+            <button class="btn-solid" onclick="openOppModal()"><i class="bi bi-plus-lg"></i> Oportunidad</button>
           </div>
         </div>
-        <div class="stat-card" style="--stat-bar: #38bdf8; --stat-bg: rgba(56, 189, 248, 0.15); --stat-color: #38bdf8;">
-          <div class="stat-header"><span>Tasa de Conversión</span><div class="stat-icon"><i class="bi bi-lightning-charge"></i></div></div>
-          <div class="stat-value">${state.opportunities.length ? Math.round((wonDeals.length / state.opportunities.length) * 100) : 0}%</div>
-          <div class="stat-desc">Promedio general del equipo</div>
-        </div>
-      </div>
-
-      <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;" class="dashboard-cols">
-        <div class="card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
-            <div>
-              <h2 style="font-size: 15px; font-weight: 800;">Volumen de Oportunidades por Etapa</h2>
-              <p style="font-size: 12px; color: var(--text-muted);">Forecast comercial en tiempo real</p>
-            </div>
-            <button class="btn btn-secondary btn-sm" onclick="navigateTo('pipeline')">Ver Embudo <i class="bi bi-arrow-right"></i></button>
+        <div class="metrics-row">
+          <div class="metric-box">
+            <div class="metric-meta"><span>Pipeline Activo</span><i class="bi bi-graph-up"></i></div>
+            <div class="metric-num">$ ${totalOppVal.toLocaleString('es-AR')}</div>
           </div>
-          <div style="display: flex; flex-direction: column; gap: 14px;">
-            ${STAGES.map(stage => {
-              const items = state.opportunities.filter(o => o.stage === stage);
-              const val = items.reduce((s, o) => s + (Number(o.value) || 0), 0);
-              const pct = totalPipeline ? Math.min(100, Math.round((val / totalPipeline) * 100)) : 0;
-              return `
-              <div>
-                <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; margin-bottom: 6px;">
-                  <span style="display:flex; align-items:center; gap: 6px;">
-                    <span style="width: 8px; height: 8px; border-radius: 50%; background: ${STAGE_COLORS[stage]};"></span>
-                    ${stage} (${items.length})
-                  </span>
-                  <span>${formatCurrency(val)}</span>
-                </div>
-                <div style="height: 8px; background: var(--bg-elevated); border-radius: 999px; overflow: hidden;">
-                  <div style="width: ${pct}%; height: 100%; background: ${STAGE_COLORS[stage]}; border-radius: 999px; transition: width 0.4s ease;"></div>
-                </div>
-              </div>`;
-            }).join('')}
+          <div class="metric-box">
+            <div class="metric-meta"><span>Negocios Ganados</span><i class="bi bi-trophy"></i></div>
+            <div class="metric-num">$ ${wonVal.toLocaleString('es-AR')}</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-meta"><span>Contactos Registrados</span><i class="bi bi-people"></i></div>
+            <div class="metric-num">${state.contacts.length}</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-meta"><span>Seguimientos Pendientes</span><i class="bi bi-clock"></i></div>
+            <div class="metric-num">${state.followUps.filter(x => x.status !== 'Completado').length}</div>
           </div>
         </div>
-
-        <div class="card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 16px;">
-            <h2 style="font-size: 15px; font-weight: 800;">Seguimientos Clave</h2>
-            <button class="btn btn-primary btn-sm" onclick="openModalFollowUp()"><i class="bi bi-plus"></i></button>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 10px;">
-            ${state.followUps.filter(f => f.status !== 'Completado').slice(0, 4).map(f => {
-              const contact = state.contacts.find(c => c.id === f.contactId);
-              const isPast = new Date(f.dueAt).getTime() < Date.now();
-              return `
-              <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px; background: var(--bg-elevated); border-radius: var(--radius-md);">
-                <div>
-                  <div style="font-weight: 700; font-size: 12px;">${escapeHtml(f.title)}</div>
-                  <div style="font-size: 11px; color: ${isPast ? 'var(--danger)' : 'var(--text-muted)'};">
-                    <i class="bi bi-${isPast ? 'clock-history' : 'calendar'}"></i> ${formatDate(f.dueAt)} · ${escapeHtml(contact ? contact.name : f.type)}
-                  </div>
-                </div>
-                <button class="btn btn-secondary btn-icon-only" onclick="completeFollowUp('${f.id}')" title="Marcar como listo">
-                  <i class="bi bi-check2"></i>
-                </button>
-              </div>`;
-            }).join('') || '<p style="color:var(--text-muted); font-size:12px; text-align:center; padding: 20px;">No hay tareas pendientes.</p>'}
-          </div>
+        <div class="table-container">
+          <div style="padding: 18px 20px; font-weight: 700; border-bottom: 1px solid var(--border);">Últimas Oportunidades</div>
+          <table>
+            <thead><tr><th>Título</th><th>Etapa</th><th>Valor</th><th>Responsable</th></tr></thead>
+            <tbody>
+              ${state.opportunities.slice(0, 5).map(opp => `
+                <tr>
+                  <td><b>${opp.title}</b></td>
+                  <td><span style="background:var(--primary-light);color:var(--primary);padding:4px 8px;border-radius:6px;font-size:12px;font-weight:700;">${opp.stage}</span></td>                   <td>$ ${Number(opp.value || 0).toLocaleString('es-AR')}</td>
+                  <td>${opp.owner || 'Sin asignar'}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
         </div>
-      </div>
       `;
     }
 
     function renderPipeline() {
       return `
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <div class="search-input-wrap" style="width: 260px;">
-            <i class="bi bi-search"></i>
-            <input type="text" placeholder="Filtrar oportunidad..." value="${escapeHtml(state.search)}" oninput="state.search = this.value; renderView();">
+        <div class="section-head">
+          <div class="section-title">
+            <h1>Pipeline de Ventas</h1>
+            <p>Arrastrá las tarjetas para avanzar en el embudo comercial.</p>
           </div>
+          <button class="btn-solid" onclick="openOppModal()"><i class="bi bi-plus-lg"></i> Nueva Oportunidad</button>
         </div>
-        <button class="btn btn-primary" onclick="openModalOpportunity()"><i class="bi bi-plus-lg"></i> Nueva Oportunidad</button>
-      </div>
-
-      <div class="kanban-board">
-        ${STAGES.map(stage => {
-          const deals = state.opportunities.filter(o => o.stage === stage && (
-            !state.search || o.title.toLowerCase().includes(state.search.toLowerCase())
-          ));
-          const totalCol = deals.reduce((s, o) => s + (Number(o.value) || 0), 0);
-
-          return `
-          <div class="kanban-col" data-stage="${stage}" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, '${stage}')">
-            <div class="kanban-col-head">
-              <div class="col-title-group">
-                <span class="col-dot" style="--col-color: ${STAGE_COLORS[stage]};"></span>
-                <span class="col-name">${stage}</span>
-                <span class="col-count">${deals.length}</span>
+        <div class="kanban-board">
+          ${STAGES.map(stage => {
+            const list = state.opportunities.filter(x => x.stage === stage);
+            const total = list.reduce((a, b) => a + Number(b.value || 0), 0);
+            return `
+              <div class="kanban-col" data-stage="${stage}" ondragover="event.preventDefault()" ondrop="dropOpp(event, '${stage}')">
+                <div class="kanban-header">
+                  <span>${stage}</span>                   <span style="font-size:12px;color:var(--text-muted);">$ ${total.toLocaleString('es-AR')}</span>
+                </div>
+                ${list.map(deal => `
+                  <div class="deal-card" draggable="true" ondragstart="dragOpp(event, '${deal.id}')">
+                    <h4>${deal.title}</h4>
+                    <div class="deal-val">$ ${Number(deal.value || 0).toLocaleString('es-AR')}</div>
+                    <div style="font-size:12px;color:var(--text-muted);display:flex;justify-content:space-between;">
+                      <span>${deal.owner || 'Sin asignar'}</span>
+                      <span>${deal.probability || 10}%</span>
+                    </div>
+                  </div>
+                `).join('')}
               </div>
-              <span class="col-total">${formatCurrency(totalCol)}</span>
-            </div>
-            <div class="kanban-cards-area">
-              ${deals.map(d => {
-                const contact = state.contacts.find(c => c.id === d.contactId);
-                const stale = daysSince(d.lastActivity);
-                const isUrgent = stale >= state.settings.staleDays;
-                return `
-                <div class="deal-item" draggable="true" ondragstart="handleDragStart(event, '${d.id}')" onclick="openModalOpportunity('${d.id}')">
-                  <div class="deal-top">
-                    <span class="deal-title">${escapeHtml(d.title)}</span>
-                    <span class="badge ${isUrgent ? 'badge-danger' : 'badge-neutral'}">${d.probability || 0}%</span>
-                  </div>
-                  <div class="deal-company"><i class="bi bi-building"></i> ${escapeHtml(contact ? (contact.company || contact.name) : 'Sin contacto')}</div>
-                  <div class="deal-value">${formatCurrency(d.value)}</div>
-                  <div class="deal-bottom">
-                    <span class="deal-owner"><i class="bi bi-person-circle"></i> ${escapeHtml(d.owner || 'Nexo')}</span>
-                    ${stale > 2 ? `<span class="deal-stale-tag ${isUrgent ? 'urgent' : ''}"><i class="bi bi-hourglass-split"></i> ${stale}d</span>` : ''}
-                  </div>
-                </div>`;
-              }).join('')}
-            </div>
-          </div>`;
-        }).join('')}
-      </div>
+            `;
+          }).join('')}
+        </div>
       `;
-    }
-
-    let draggedOpportunityId = null;
-    function handleDragStart(e, id) {
-      draggedOpportunityId = id;
-      e.dataTransfer.setData('text/plain', id);
-      e.currentTarget.classList.add('dragging');
-    }
-    function handleDragOver(e) {
-      e.preventDefault();
-      e.currentTarget.classList.add('dragover');
-    }
-    function handleDragLeave(e) {
-      e.currentTarget.classList.remove('dragover');
-    }
-    function handleDrop(e, newStage) {
-      e.preventDefault();
-      e.currentTarget.classList.remove('dragover');
-      if (!draggedOpportunityId) return;
-      const opp = state.opportunities.find(o => o.id === draggedOpportunityId);
-      if (opp && opp.stage !== newStage) {
-        opp.stage = newStage;
-        opp.lastActivity = new Date().toISOString();
-        saveLocalData();
-        renderView();
-        toast(`Oportunidad movida a ${newStage}`);
-      }
-      draggedOpportunityId = null;
     }
 
     function renderContacts() {
-      const filtered = state.contacts.filter(c => {
-        const matchesFilter = state.filter === 'Todos' || c.status === state.filter;
-        const matchesQuery = !state.search || (
-          c.name.toLowerCase().includes(state.search.toLowerCase()) ||
-          (c.company || '').toLowerCase().includes(state.search.toLowerCase()) ||
-          (c.email || '').toLowerCase().includes(state.search.toLowerCase())
-        );
-        return matchesFilter && matchesQuery;
-      });
-
       return `
-      <div class="table-container">
-        <div class="toolbar-bar">
-          <div class="search-input-wrap">
-            <i class="bi bi-search"></i>
-            <input type="text" placeholder="Buscar por nombre, email o empresa..." value="${escapeHtml(state.search)}" oninput="state.search = this.value; renderView();">
+        <div class="section-head">
+          <div class="section-title">
+            <h1>Base de Contactos</h1>
+            <p>Directorio centralizado de clientes y prospectos.</p>
           </div>
-          <div style="display: flex; gap: 8px;">
-            <select class="filter-select" onchange="state.filter = this.value; renderView();">
-              <option value="Todos" ${state.filter === 'Todos' ? 'selected' : ''}>Todos los estados</option>
-              <option value="Prospecto" ${state.filter === 'Prospecto' ? 'selected' : ''}>Prospectos</option>
-              <option value="Cliente" ${state.filter === 'Cliente' ? 'selected' : ''}>Clientes</option>
-            </select>
-            <button class="btn btn-secondary" onclick="exportContactsCSV()"><i class="bi bi-download"></i> CSV</button>
-            <button class="btn btn-primary" onclick="openModalContact()"><i class="bi bi-person-plus"></i> Nuevo Contacto</button>
+          <div class="actions-row">
+            <button class="btn-outline" onclick="exportContactsCSV()"><i class="bi bi-download"></i> Exportar CSV</button>
+            <button class="btn-solid" onclick="openContactModal()"><i class="bi bi-person-plus"></i> Nuevo Contacto</button>
           </div>
         </div>
-
-        <table class="modern-table">
-          <thead>
-            <tr>
-              <th>Contacto</th>
-              <th>Empresa</th>
-              <th>Email</th>
-              <th>Teléfono</th>
-              <th>Estado</th>
-              <th>Responsable</th>
-              <th style="text-align: right;">Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${filtered.map(c => `
-            <tr>
-              <td style="font-weight: 700;">${escapeHtml(c.name)}</td>
-              <td style="color: var(--text-muted);">${escapeHtml(c.company || '—')}</td>
-              <td>${escapeHtml(c.email || '—')}</td>
-              <td style="color: var(--text-muted);">${escapeHtml(c.phone || '—')}</td>
-              <td><span class="badge ${c.status === 'Cliente' ? 'badge-accent' : 'badge-primary'}">${c.status}</span></td>
-              <td style="color: var(--text-muted);">${escapeHtml(c.owner || '—')}</td>
-              <td style="text-align: right;">
-                <button class="btn btn-secondary btn-icon-only" onclick="openModalContact('${c.id}')" title="Editar"><i class="bi bi-pencil"></i></button>
-              </td>
-            </tr>
-            `).join('')}
-          </tbody>
-        </table>
-      </div>
-      `;
-    }
-
-    function renderQuotes() {
-      return `
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
-        <div>
-          <h2 style="font-size: 16px; font-weight: 800;">Cotizaciones & Propuestas</h2>
-          <p style="font-size: 12px; color: var(--text-muted);">Generación y control de documentos comerciales</p>
-        </div>
-        <button class="btn btn-primary" onclick="openModalQuote()"><i class="bi bi-plus-lg"></i> Nueva Cotización</button>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
-        ${state.quotes.map(q => {
-          const contact = state.contacts.find(c => c.id === q.contactId);
-          return `
-          <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
-                <span style="font-weight: 800; font-size: 12px; color: var(--primary);">${escapeHtml(q.quoteNumber)}</span>
-                <span class="badge ${q.status === 'Aceptada' ? 'badge-accent' : 'badge-warning'}">${q.status}</span>
-              </div>
-              <div style="font-size: 15px; font-weight: 800; margin-bottom: 4px;">${escapeHtml(contact ? contact.name : 'Cliente General')}</div>
-              <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">Válida hasta: ${formatDate(q.validUntil)}</div>
-              <div style="font-size: 22px; font-weight: 800; color: var(--text-main); margin-bottom: 16px;">${formatCurrency(q.total, q.currency)}</div>
-            </div>
-            <div style="display: flex; gap: 8px; border-top: 1px solid var(--border); padding-top: 12px;">
-              <button class="btn btn-secondary btn-sm" style="flex:1;" onclick="printQuoteViewer('${q.id}')"><i class="bi bi-printer"></i> Imprimir / PDF</button>
-              <button class="btn btn-secondary btn-icon-only" onclick="openModalQuote('${q.id}')"><i class="bi bi-pencil"></i></button>
-            </div>
-          </div>`;
-        }).join('')}
-      </div>
-      `;
-    }
-
-    function renderFollowUps() {
-      const items = state.followUps.slice().sort((a,b) => new Date(a.dueAt) - new Date(b.dueAt));
-      return `
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h2 style="font-size: 16px; font-weight: 800;">Seguimientos & Agenda Comercial</h2>
-        <button class="btn btn-primary" onclick="openModalFollowUp()"><i class="bi bi-plus-lg"></i> Programar Tarea</button>
-      </div>
-      <div class="card" style="padding: 0; overflow: hidden;">
-        <table class="modern-table">
-          <thead>
-            <tr>
-              <th>Acción</th>
-              <th>Tipo</th>
-              <th>Contacto</th>
-              <th>Fecha y Hora</th>
-              <th>Responsable</th>
-              <th>Estado</th>
-              <th style="text-align: right;">Finalizar</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${items.map(f => {
-              const contact = state.contacts.find(c => c.id === f.contactId);
-              const done = f.status === 'Completado';
-              return `
-              <tr style="${done ? 'opacity: 0.55;' : ''}">
-                <td style="font-weight: 700;">${escapeHtml(f.title)}</td>
-                <td><span class="badge badge-neutral">${f.type}</span></td>
-                <td>${escapeHtml(contact ? contact.name : '—')}</td>
-                <td>${formatDate(f.dueAt)}</td>
-                <td>${escapeHtml(f.owner || '—')}</td>
-                <td><span class="badge ${done ? 'badge-accent' : 'badge-warning'}">${f.status}</span></td>
-                <td style="text-align: right;">
-                  ${!done ? `<button class="btn btn-secondary btn-sm" onclick="completeFollowUp('${f.id}')"><i class="bi bi-check-lg"></i> Listo</button>` : '<i class="bi bi-check-circle-fill" style="color:var(--accent);"></i>'}
-                </td>
-              </tr>`;
-            }).join('')}
-          </tbody>
-        </table>
-      </div>
-      `;
-    }
-
-    function renderConversations() {
-      return `
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h2 style="font-size: 16px; font-weight: 800;">Bitácora de Interacciones</h2>
-        <button class="btn btn-primary" onclick="openModalConversation()"><i class="bi bi-plus-lg"></i> Registrar Contacto</button>
-      </div>
-      <div style="display: flex; flex-direction: column; gap: 12px;">
-        ${state.conversations.map(c => {
-          const contact = state.contacts.find(x => x.id === c.contactId);
-          return `
-          <div class="card">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-              <span style="font-weight: 800; font-size: 13px;">${escapeHtml(contact ? contact.name : 'Contacto')}</span>
-              <span style="font-size: 11px; color: var(--text-muted);">${formatDate(c.createdAt)}</span>
-            </div>
-            <div style="font-size: 13px; color: var(--text-main); margin-bottom: 12px; line-height: 1.6;">${escapeHtml(c.summary)}</div>
-            <div style="display: flex; gap: 6px;">
-              <span class="badge badge-primary"><i class="bi bi-chat-dots"></i> ${c.channel}</span>
-              <span class="badge badge-neutral">${c.direction}</span>
-              <span class="badge badge-neutral">${escapeHtml(c.owner)}</span>
-            </div>
-          </div>`;
-        }).join('')}
-      </div>
-      `;
-    }
-
-    function renderSellers() {
-      return `
-      <div style="margin-bottom: 20px;">
-        <h2 style="font-size: 16px; font-weight: 800;">Rendimiento del Equipo Comercial</h2>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px;">
-        ${state.sellers.map(s => {
-          const deals = state.opportunities.filter(o => o.owner === s.name);
-          const won = deals.filter(o => o.stage === 'Ganado');
-          const totalWonVal = won.reduce((sum, o) => sum + (Number(o.value) || 0), 0);
-          return `
-          <div class="card">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-              <div style="width: 42px; height: 42px; border-radius: 12px; background: var(--primary); color: #fff; display: grid; place-items: center; font-weight: 800;">
-                ${s.name.charAt(0)}
-              </div>
-              <div>
-                <div style="font-weight: 800; font-size: 14px;">${escapeHtml(s.name)}</div>
-                <div style="font-size: 11px; color: var(--text-muted);">${escapeHtml(s.email)}</div>
-              </div>
-            </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px;">
-              <div style="background: var(--bg-elevated); padding: 10px; border-radius: var(--radius-md);">
-                <span style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Cierres</span>
-                <div style="font-size: 16px; font-weight: 800;">${won.length}</div>
-              </div>
-              <div style="background: var(--bg-elevated); padding: 10px; border-radius: var(--radius-md);">
-                <span style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Monto Ganado</span>
-                <div style="font-size: 14px; font-weight: 800; color: var(--accent);">${formatCurrency(totalWonVal)}</div>
-              </div>
-            </div>
-          </div>`;
-        }).join('')}
-      </div>
-      `;
-    }
-
-    function exportContactsCSV() {
-      if (!state.contacts.length) {
-        toast('No hay contactos para exportar', true);
-        return;
-      }
-      const headers = ['Nombre', 'Empresa', 'Email', 'Telefono', 'Estado', 'Origen', 'Responsable'];
-      const rows = state.contacts.map(c => [
-        `"${c.name || ''}"`,
-        `"${c.company || ''}"`,
-        `"${c.email || ''}"`,
-        `"${c.phone || ''}"`,
-        `"${c.status || ''}"`,
-        `"${c.source || ''}"`,
-        `"${c.owner || ''}"`
-      ]);
-      const csvContent = 'data:text/csv;charset=utf-8,\uFEFF' + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
-      const encodedUri = encodeURI(csvContent);
-      const link = document.createElement('a');
-      link.setAttribute('href', encodedUri);
-      link.setAttribute('download', `Contactos_NexoCRM_${new Date().toISOString().slice(0, 10)}.csv`);
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      toast('Exportación CSV completada');
-    }
-
-    function printQuoteViewer(id) {
-      const q = state.quotes.find(x => x.id === id);
-      if (!q) return;
-      const contact = state.contacts.find(c => c.id === q.contactId) || {};
-      let items = [];
-      try { items = JSON.parse(q.itemsJson || '[]'); } catch (_) {}
-
-      const win = window.open('', '_blank');
-      if (!win) { toast('Permití ventanas emergentes para ver el documento', true); return; }
-      win.document.write(`
-        <!doctype html>
-        <html lang="es">
-        <head>
-          <meta charset="utf-8">
-          <title>${escapeHtml(q.quoteNumber)} - Nexo CRM</title>
-          <style>
-            body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 40px; color: #1e293b; }
-            .header { display: flex; justify-content: space-between; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; }
-            .brand { font-size: 24px; font-weight: 800; color: #4f46e5; }
-            .meta { text-align: right; font-size: 13px; color: #64748b; }
-            .client-box { margin: 30px 0; padding: 20px; background: #f8fafc; border-radius: 8px; font-size: 14px; }
-            table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
-            th { background: #f1f5f9; text-align: left; padding: 10px; border-bottom: 2px solid #cbd5e1; }
-            td { padding: 12px 10px; border-bottom: 1px solid #e2e8f0; }
-            .totals { width: 300px; margin-left: auto; margin-top: 20px; font-size: 14px; }
-            .totals-row { display: flex; justify-content: space-between; padding: 6px 0; }
-            .totals-grand { font-size: 18px; font-weight: 800; border-top: 2px solid #0f172a; padding-top: 10px; margin-top: 6px; }
-            .actions { position: fixed; top: 20px; right: 20px; }
-            .btn { background: #4f46e5; color: #fff; padding: 10px 18px; border: none; border-radius: 6px; cursor: pointer; font-weight: 700; }
-            @media print { .actions { display: none; } body { margin: 0; } }
-          </style>
-        </head>
-        <body>
-          <div class="actions"><button class="btn" onclick="window.print()">Imprimir / Guardar en PDF</button></div>
-          <div class="header">
-            <div>
-              <div class="brand">Nexo CRM</div>
-              <div style="font-size:13px; color:#64748b; margin-top:4px;">${escapeHtml(state.settings.companyName)}</div>
-            </div>
-            <div class="meta">
-              <div style="font-size:16px; font-weight:800; color:#0f172a;">${escapeHtml(q.quoteNumber)}</div>
-              <div>Fecha: ${formatDate(q.createdAt)}</div>
-              <div>Vencimiento: ${formatDate(q.validUntil)}</div>
-            </div>
-          </div>
-
-          <div class="client-box">
-            <div style="font-size:11px; text-transform:uppercase; color:#94a3b8; font-weight:700;">Propuesta Comercial Para:</div>
-            <div style="font-size:16px; font-weight:800; margin-top:4px;">${escapeHtml(contact.name || 'Cliente')}</div>
-            <div>${escapeHtml(contact.company || '')} · ${escapeHtml(contact.email || '')}</div>
-          </div>
-
+        <div class="table-container">
           <table>
-            <thead>
-              <tr><th>Descripción</th><th style="text-align:center;">Cantidad</th><th style="text-align:right;">Precio</th><th style="text-align:right;">Subtotal</th></tr>
-            </thead>
+            <thead><tr><th>Nombre</th><th>Empresa</th><th>Email</th><th>Teléfono</th><th>Estado</th></tr></thead>
             <tbody>
-              ${items.map(it => `
-              <tr>
-                <td>${escapeHtml(it.description)}</td>
-                <td style="text-align:center;">${it.quantity}</td>
-                <td style="text-align:right;">${formatCurrency(it.price, q.currency)}</td>
-                <td style="text-align:right;">${formatCurrency(it.total, q.currency)}</td>
-              </tr>`).join('')}
+              ${state.contacts.map(c => `
+                <tr>
+                  <td><b>${c.name}</b></td>
+                  <td>${c.company || '—'}</td>
+                  <td>${c.email || '—'}</td>
+                  <td>${c.phone || '—'}</td>
+                  <td><span style="background:var(--accent-light);color:var(--accent);padding:4px 8px;border-radius:6px;font-size:12px;font-weight:700;">${c.status}</span></td>
+                </tr>
+              `).join('')}
             </tbody>
           </table>
-
-          <div class="totals">
-            <div class="totals-row"><span>Subtotal:</span><span>${formatCurrency(q.subtotal, q.currency)}</span></div>
-            <div class="totals-row"><span>IVA / Impuestos (${q.taxRate || 0}%):</span><span>${formatCurrency(q.taxAmount, q.currency)}</span></div>
-            <div class="totals-row totals-grand"><span>Total:</span><span>${formatCurrency(q.total, q.currency)}</span></div>
-          </div>
-
-          ${q.notes ? `<div style="margin-top:40px; font-size:12px; color:#64748b;"><strong>Condiciones:</strong><br>${escapeHtml(q.notes)}</div>` : ''}
-        </body>
-        </html>
-      `);
-      win.document.close();
-    }
-
-    function openModalContact(id = null) {
-      const c = state.contacts.find(x => x.id === id) || {};
-      $('#modalSlot').innerHTML = `
-      <div class="modal-backdrop">
-        <div class="modal-box">
-          <div class="modal-header">
-            <h3 class="modal-title">${c.id ? 'Editar Contacto' : 'Nuevo Contacto'}</h3>
-            <button class="top-action-btn" onclick="closeModal()"><i class="bi bi-x-lg"></i></button>
-          </div>
-          <form id="contactForm">
-            <div class="modal-body form-grid">
-              <div class="form-group col-span-2">
-                <label class="form-label">Nombre Completo *</label>
-                <input class="form-control" name="name" value="${escapeHtml(c.name || '')}" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Empresa</label>
-                <input class="form-control" name="company" value="${escapeHtml(c.company || '')}">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Estado</label>
-                <select class="form-control" name="status">
-                  <option value="Prospecto" ${c.status === 'Prospecto' ? 'selected' : ''}>Prospecto</option>
-                  <option value="Cliente" ${c.status === 'Cliente' ? 'selected' : ''}>Cliente</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Email</label>
-                <input class="form-control" type="email" name="email" value="${escapeHtml(c.email || '')}">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Teléfono</label>
-                <input class="form-control" name="phone" value="${escapeHtml(c.phone || '')}">
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
-              <button type="submit" class="btn btn-primary">Guardar Contacto</button>
-            </div>
-          </form>
         </div>
-      </div>`;
-
-      $('#contactForm').onsubmit = (e) => {
-        e.preventDefault();
-        const fd = new FormData(e.target);
-        if (c.id) {
-          Object.assign(c, Object.fromEntries(fd));
-          c.updatedAt = new Date().toISOString();
-        } else {
-          state.contacts.push({
-            id: 'C-' + Date.now(),
-            owner: state.user.name,
-            updatedAt: new Date().toISOString(),
-            ...Object.fromEntries(fd)
-          });
-        }
-        saveLocalData();
-        closeModal();
-        renderView();
-        toast('Contacto guardado con éxito');
-      };
-    }
-
-    function openModalOpportunity(id = null) {
-      const opp = state.opportunities.find(x => x.id === id) || {};
-      $('#modalSlot').innerHTML = `
-      <div class="modal-backdrop">
-        <div class="modal-box">
-          <div class="modal-header">
-            <h3 class="modal-title">${opp.id ? 'Editar Oportunidad' : 'Nueva Oportunidad'}</h3>
-            <button class="top-action-btn" onclick="closeModal()"><i class="bi bi-x-lg"></i></button>
-          </div>
-          <form id="oppForm">
-            <div class="modal-body form-grid">
-              <div class="form-group col-span-2">
-                <label class="form-label">Título del Negocio *</label>
-                <input class="form-control" name="title" value="${escapeHtml(opp.title || '')}" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Contacto Asociado</label>
-                <select class="form-control" name="contactId">
-                  ${state.contacts.map(c => `<option value="${c.id}" ${opp.contactId === c.id ? 'selected' : ''}>${escapeHtml(c.name)} (${escapeHtml(c.company || 'Personal')})</option>`).join('')}
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Valor Estimado ($)</label>
-                <input class="form-control" type="number" name="value" value="${opp.value || ''}" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Etapa</label>
-                <select class="form-control" name="stage">
-                  ${STAGES.map(s => `<option value="${s}" ${opp.stage === s ? 'selected' : ''}>${s}</option>`).join('')}
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Probabilidad (%)</label>
-                <input class="form-control" type="number" name="probability" value="${opp.probability ?? 25}" min="0" max="100">
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
-              <button type="submit" class="btn btn-primary">Guardar Negocio</button>
-            </div>
-          </form>
-        </div>
-      </div>`;
-
-      $('#oppForm').onsubmit = (e) => {
-        e.preventDefault();
-        const fd = new FormData(e.target);
-        if (opp.id) {
-          Object.assign(opp, Object.fromEntries(fd));
-          opp.lastActivity = new Date().toISOString();
-        } else {
-          state.opportunities.push({
-            id: 'O-' + Date.now(),
-            owner: state.user.name,
-            lastActivity: new Date().toISOString(),
-            ...Object.fromEntries(fd)
-          });
-        }
-        saveLocalData();
-        closeModal();
-        renderView();
-        toast('Oportunidad actualizada');
-      };
-    }
-
-    function openModalFollowUp() {
-      $('#modalSlot').innerHTML = `
-      <div class="modal-backdrop">
-        <div class="modal-box">
-          <div class="modal-header">
-            <h3 class="modal-title">Programar Seguimiento</h3>
-            <button class="top-action-btn" onclick="closeModal()"><i class="bi bi-x-lg"></i></button>
-          </div>
-          <form id="followUpForm">
-            <div class="modal-body form-grid">
-              <div class="form-group col-span-2">
-                <label class="form-label">Asunto / Tarea *</label>
-                <input class="form-control" name="title" placeholder="Ej: Llamada de presentación" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Tipo de Acción</label>
-                <select class="form-control" name="type">
-                  <option value="Llamada">Llamada</option>
-                  <option value="Reunión">Reunión</option>
-                  <option value="WhatsApp">WhatsApp</option>
-                  <option value="Email">Email</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Contacto</label>
-                <select class="form-control" name="contactId">
-                  ${state.contacts.map(c => `<option value="${c.id}">${escapeHtml(c.name)}</option>`).join('')}
-                </select>
-              </div>
-              <div class="form-group col-span-2">
-                <label class="form-label">Fecha y Hora Límite</label>
-                <input class="form-control" type="datetime-local" name="dueAt" required value="${new Date(Date.now() + 86400000).toISOString().slice(0, 16)}">
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
-              <button type="submit" class="btn btn-primary">Crear Tarea</button>
-            </div>
-          </form>
-        </div>
-      </div>`;
-
-      $('#followUpForm').onsubmit = (e) => {
-        e.preventDefault();
-        const fd = new FormData(e.target);
-        state.followUps.push({
-          id: 'F-' + Date.now(),
-          status: 'Pendiente',
-          owner: state.user.name,
-          ...Object.fromEntries(fd)
-        });
-        saveLocalData();
-        closeModal();
-        renderView();
-        toast('Seguimiento añadido a la agenda');
-      };
-    }
-
-    function openModalConversation() {
-      $('#modalSlot').innerHTML = `
-      <div class="modal-backdrop">
-        <div class="modal-box">
-          <div class="modal-header">
-            <h3 class="modal-title">Registrar Interacción</h3>
-            <button class="top-action-btn" onclick="closeModal()"><i class="bi bi-x-lg"></i></button>
-          </div>
-          <form id="convForm">
-            <div class="modal-body form-grid">
-              <div class="form-group col-span-2">
-                <label class="form-label">Contacto</label>
-                <select class="form-control" name="contactId">
-                  ${state.contacts.map(c => `<option value="${c.id}">${escapeHtml(c.name)} (${escapeHtml(c.company || '')})</option>`).join('')}
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Canal</label>
-                <select class="form-control" name="channel">
-                  <option value="WhatsApp">WhatsApp</option>
-                  <option value="Llamada">Llamada</option>
-                  <option value="Email">Email</option>
-                  <option value="Reunión">Reunión</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Dirección</label>
-                <select class="form-control" name="direction">
-                  <option value="Saliente">Saliente</option>
-                  <option value="Entrante">Entrante</option>
-                </select>
-              </div>
-              <div class="form-group col-span-2">
-                <label class="form-label">Resumen de la Conversación *</label>
-                <textarea class="form-control" name="summary" required placeholder="Detalles de lo conversado y siguientes compromisos..."></textarea>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
-              <button type="submit" class="btn btn-primary">Registrar</button>
-            </div>
-          </form>
-        </div>
-      </div>`;
-
-      $('#convForm').onsubmit = (e) => {
-        e.preventDefault();
-        const fd = new FormData(e.target);
-        state.conversations.unshift({
-          id: 'CONV-' + Date.now(),
-          owner: state.user.name,
-          createdAt: new Date().toISOString(),
-          ...Object.fromEntries(fd)
-        });
-        saveLocalData();
-        closeModal();
-        renderView();
-        toast('Conversación registrada');
-      };
-    }
-
-    function openModalQuote(id = null) {
-      const q = state.quotes.find(x => x.id === id) || {};
-      $('#modalSlot').innerHTML = `
-      <div class="modal-backdrop">
-        <div class="modal-box">
-          <div class="modal-header">
-            <h3 class="modal-title">${q.id ? 'Editar Cotización' : 'Nueva Cotización'}</h3>
-            <button class="top-action-btn" onclick="closeModal()"><i class="bi bi-x-lg"></i></button>
-          </div>
-          <form id="quoteForm">
-            <div class="modal-body form-grid">
-              <div class="form-group col-span-2">
-                <label class="form-label">Contacto</label>
-                <select class="form-control" name="contactId">
-                  ${state.contacts.map(c => `<option value="${c.id}" ${q.contactId === c.id ? 'selected' : ''}>${escapeHtml(c.name)}</option>`).join('')}
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Monto Subtotal ($)</label>
-                <input class="form-control" type="number" name="subtotal" value="${q.subtotal || ''}" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label">IVA / Impuestos (%)</label>
-                <input class="form-control" type="number" name="taxRate" value="${q.taxRate ?? 21}">
-              </div>
-              <div class="form-group col-span-2">
-                <label class="form-label">Condiciones / Notas</label>
-                <textarea class="form-control" name="notes">${escapeHtml(q.notes || '')}</textarea>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
-              <button type="submit" class="btn btn-primary">Guardar Cotización</button>
-            </div>
-          </form>
-        </div>
-      </div>`;
-
-      $('#quoteForm').onsubmit = (e) => {
-        e.preventDefault();
-        const fd = new FormData(e.target);
-        const subtotal = Number(fd.get('subtotal')) || 0;
-        const taxRate = Number(fd.get('taxRate')) || 0;
-        const taxAmount = (subtotal * taxRate) / 100;
-        const total = subtotal + taxAmount;
-
-        if (q.id) {
-          Object.assign(q, {
-            subtotal, taxRate, taxAmount, total,
-            notes: fd.get('notes'),
-            contactId: fd.get('contactId')
-          });
-        } else {
-          state.quotes.unshift({
-            id: 'Q-' + Date.now(),
-            quoteNumber: `COT-2026-${String(state.quotes.length + 1).padStart(3, '0')}`,
-            currency: 'ARS',
-            status: 'Enviada',
-            validUntil: new Date(Date.now() + 86400000 * 15).toISOString().slice(0, 10),
-            itemsJson: JSON.stringify([{ description: 'Servicios Profesionales', quantity: 1, price: subtotal, total: subtotal }]),
-            subtotal, taxRate, taxAmount, total,
-            notes: fd.get('notes'),
-            contactId: fd.get('contactId'),
-            owner: state.user.name,
-            createdAt: new Date().toISOString()
-          });
-        }
-        saveLocalData();
-        closeModal();
-        renderView();
-        toast('Cotización generada exitosamente');
-      };
-    }
-
-    function completeFollowUp(id) {
-      const f = state.followUps.find(x => x.id === id);
-      if (f) {
-        f.status = 'Completado';
-        saveLocalData();
-        renderView();
-        toast('Seguimiento completado');
-      }
-    }
-
-    function closeModal() {
-      $('#modalSlot').innerHTML = '';
-    }
-
-    const COMMANDS = [
-      { label: 'Ir al Resumen Dashboard', icon: 'bi-grid-1x2', action: () => navigateTo('dashboard') },
-      { label: 'Ver Embudo de Ventas Kanban', icon: 'bi-kanban', action: () => navigateTo('pipeline') },
-      { label: 'Ver Directorio de Contactos', icon: 'bi-people', action: () => navigateTo('contacts') },
-      { label: 'Ver Agenda de Seguimientos', icon: 'bi-calendar2-check', action: () => navigateTo('followups') },
-      { label: 'Ver Cotizaciones', icon: 'bi-receipt', action: () => navigateTo('quotes') },
-      { label: 'Crear Nuevo Contacto', icon: 'bi-person-plus', action: () => openModalContact() },
-      { label: 'Crear Nueva Oportunidad', icon: 'bi-plus-circle', action: () => openModalOpportunity() },
-      { label: 'Programar Seguimiento', icon: 'bi-calendar-plus', action: () => openModalFollowUp() },
-      { label: 'Registrar Conversación', icon: 'bi-chat-dots', action: () => openModalConversation() },
-      { label: 'Exportar Contactos a CSV', icon: 'bi-download', action: () => exportContactsCSV() },
-      { label: 'Alternar Modo Oscuro / Claro', icon: 'bi-circle-half', action: () => toggleTheme() }
-    ];
-
-    function openCommandPalette() {
-      $('#commandPalette').hidden = false;
-      $('#commandInput').value = '';
-      renderCommandList('');
-      setTimeout(() => $('#commandInput').focus(), 50);
-    }
-    function closeCommandPalette() {
-      $('#commandPalette').hidden = true;
-    }
-    function renderCommandList(query) {
-      const q = query.toLowerCase().trim();
-      const filtered = COMMANDS.filter(c => c.label.toLowerCase().includes(q));
-      $('#commandList').innerHTML = filtered.map((c, i) => `
-        <div class="command-item ${i === 0 ? 'focused' : ''}" onclick="executeCommand(${COMMANDS.indexOf(c)})">
-          <i class="bi ${c.icon}"></i>
-          <span>${escapeHtml(c.label)}</span>
-          <span class="command-item-action">Acción</span>
-        </div>
-      `).join('') || '<div style="padding:14px; text-align:center; color:var(--text-muted);">Sin resultados.</div>';
-    }
-    function executeCommand(index) {
-      closeCommandPalette();
-      COMMANDS[index]?.action();
-    }
-
-    function navigateTo(viewKey) {
-      state.view = viewKey;
-      state.search = '';
-      state.filter = 'Todos';
-      $$('.nav-item').forEach(b => b.classList.toggle('active', b.dataset.view === viewKey));
-      const titles = {
-        dashboard: 'Resumen Comercial',
-        pipeline: 'Embudo de Ventas Kanban',
-        contacts: 'Directorio de Contactos',
-        followups: 'Agenda de Seguimientos',
-        conversations: 'Historial de Conversaciones',
-        quotes: 'Propuestas & Cotizaciones',
-        sellers: 'Panel de Vendedores'
-      };
-      $('#pageTitle').textContent = titles[viewKey] || 'Nexo CRM';
-      renderView();
+      `;
     }
 
     function renderView() {
-      const viewRenderers = {
-        dashboard: renderDashboard,
-        pipeline: renderPipeline,
-        contacts: renderContacts,
-        followups: renderFollowUps,
-        conversations: renderConversations,
-        quotes: renderQuotes,
-        sellers: renderSellers
-      };
-      $('#viewportArea').innerHTML = (viewRenderers[state.view] || renderDashboard)();
-      $('#sidebarBadge').textContent = state.followUps.filter(f => f.status !== 'Completado').length;
+      const views = { dashboard: renderDashboard, pipeline: renderPipeline, contacts: renderContacts };
+      $('#mainContent').innerHTML = (views[state.view] \vert{}\vert{} views.dashboard)();       $$('.nav-link').forEach(btn => btn.classList.toggle('active', btn.dataset.view === state.view));
     }
 
-    function toggleTheme() {
-      applyTheme(state.theme === 'dark' ? 'light' : 'dark');
+    function dragOpp(e, id) { e.dataTransfer.setData('text/plain', id); }
+    async function dropOpp(e, newStage) {
+      const id = e.dataTransfer.getData('text/plain');
+      const item = state.opportunities.find(x => x.id === id);
+      if (item && item.stage !== newStage) {
+        item.stage = newStage;
+        renderView();
+        await api('changeStage', { id, stage: newStage });
+        toast(`Oportunidad movida a ${newStage}`);
+      }
     }
 
-    function initApp() {
-      applyTheme(state.theme);
-      loadLocalData();
-
-      // Clock update
-      const now = new Date();
-      $('#liveClock').textContent = new Intl.DateTimeFormat('es-AR', { weekday: 'short', day: 'numeric', month: 'short' }).format(now);
-
-      // Login form event
-      $('#loginForm').onsubmit = (e) => {
+    function openContactModal() {
+      $('#modalSlot').innerHTML = `
+        <div class="modal-veil" onclick="if(event.target===this)$('#modalSlot').innerHTML=''">
+          <div class="modal-box">
+            <div class="modal-top"><h3>Nuevo Contacto</h3><button onclick="$('#modalSlot').innerHTML=''"><i class="bi bi-x-lg"></i></button></div>
+            <form id="contactForm">
+              <div class="modal-body">
+                <div class="field-group"><label>Nombre</label><input class="field-wrap" style="padding:10px" name="name" required placeholder="Nombre completo"></div>
+                <div class="field-group"><label>Empresa</label><input class="field-wrap" style="padding:10px" name="company" placeholder="Empresa S.A."></div>
+                <div class="field-group"><label>Email</label><input class="field-wrap" style="padding:10px" name="email" type="email" placeholder="correo@empresa.com"></div>
+                <div class="field-group"><label>Teléfono</label><input class="field-wrap" style="padding:10px" name="phone" placeholder="+54..."></div>
+              </div>
+              <div class="modal-bottom">
+                <button class="btn-outline" type="button" onclick="$('#modalSlot').innerHTML=''">Cancelar</button>
+                <button class="btn-solid" type="submit">Guardar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      `;
+      $('#contactForm').onsubmit = async (e) => {
         e.preventDefault();
-        state.user = state.sellers[0];
-        $('#loginScreen').hidden = true;
-        $('#appShell').hidden = false;
-        $('#userName').textContent = state.user.name;
-        $('#userRole').textContent = state.user.role === 'admin' ? 'Administrador' : 'Vendedor';
-        $('#userAvatar').textContent = state.user.name.slice(0, 2).toUpperCase();
-        navigateTo('dashboard');
+        const data = Object.fromEntries(new FormData(e.target));
+        const res = await api('saveContact', { data });
+        state.contacts.push(res.item);
+        $('#modalSlot').innerHTML = '';
+        renderView();
+        toast('Contacto creado con éxito');
       };
-
-      $('#btnQuickDemo').onclick = () => {
-        $('#loginForm').requestSubmit();
-      };
-
-      $('#btnLogout').onclick = () => {
-        $('#appShell').hidden = true;
-        $('#loginScreen').hidden = false;
-      };
-
-      // Topbar buttons
-      $('#btnThemeToggle').onclick = toggleTheme;
-      $('#btnExportCSV').onclick = exportContactsCSV;
-      $('#btnQuickCreate').onclick = openModalOpportunity;
-      $('#btnOpenCommandPalette').onclick = openCommandPalette;
-
-      // Nav buttons
-      $$('.nav-item').forEach(btn => {
-        btn.onclick = () => {
-          navigateTo(btn.dataset.view);
-          $('#appShell').classList.remove('drawer-open');
-          $('#drawerDimmer').hidden = true;
-        };
-      });
-
-      // Mobile Menu Toggle
-      $('#btnMenuToggle').onclick = () => {
-        $('#appShell').classList.add('drawer-open');
-        $('#drawerDimmer').hidden = false;
-      };
-      $('#drawerDimmer').onclick = () => {
-        $('#appShell').classList.remove('drawer-open');
-        $('#drawerDimmer').hidden = true;
-      };
-
-      // Command palette events
-      $('#commandInput').oninput = (e) => renderCommandList(e.target.value);
-      $('#commandPalette').onclick = (e) => {
-        if (e.target === $('#commandPalette')) closeCommandPalette();
-      };
-
-      // Keyboard shortcuts
-      window.onkeydown = (e) => {
-        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
-          e.preventDefault();
-          if ($('#commandPalette').hidden) openCommandPalette(); else closeCommandPalette();
-        }
-        if (e.key === 'Escape') {
-          closeCommandPalette();
-          closeModal();
-        }
-      };
-
-      // Direct auto-login in local demonstration preview
-      $('#loginForm').requestSubmit();
     }
 
-    // Launch application on DOM ready
-    window.addEventListener('DOMContentLoaded', initApp);
+    function openOppModal() {
+      $('#modalSlot').innerHTML = `
+        <div class="modal-veil" onclick="if(event.target===this)$('#modalSlot').innerHTML=''">
+          <div class="modal-box">
+            <div class="modal-top"><h3>Nueva Oportunidad</h3><button onclick="$('#modalSlot').innerHTML=''"><i class="bi bi-x-lg"></i></button></div>
+            <form id="oppForm">
+              <div class="modal-body">
+                <div class="field-group"><label>Título</label><input class="field-wrap" style="padding:10px" name="title" required placeholder="Ej: Renovación de Software"></div>
+                <div class="field-group"><label>Valor Estimado</label><input class="field-wrap" style="padding:10px" name="value" type="number" required placeholder="0"></div>
+                <div class="field-group"><label>Etapa</label>
+                  <select class="field-wrap" style="padding:10px" name="stage">
+                    ${STAGES.map(s => `<option value="${s}">${s}</option>`).join('')}
+                  </select>
+                </div>
+              </div>
+              <div class="modal-bottom">
+                <button class="btn-outline" type="button" onclick="$('#modalSlot').innerHTML=''">Cancelar</button>
+                <button class="btn-solid" type="submit">Guardar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      `;
+      $('#oppForm').onsubmit = async (e) => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(e.target));
+        data.value = Number(data.value || 0);
+        const res = await api('saveOpportunity', { data });
+        state.opportunities.push(res.item);
+        $('#modalSlot').innerHTML = '';
+        renderView();
+        toast('Oportunidad registrada');
+      };
+    }
+
+    function exportContactsCSV() {
+      const headers = ['Nombre', 'Empresa', 'Email', 'Teléfono', 'Estado'];
+      const rows = state.contacts.map(c => [c.name, c.company, c.email, c.phone, c.status]);
+      const csv = [headers, ...rows].map(e => e.map(x => `"${(x||'').toString().replace(/"/g, '""')}"`).join(',')).join('\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `contactos_${new Date().toISOString().slice(0, 10)}.csv`;
+      a.click();
+    }
+
+    function showApp() {
+      $('#authView').hidden = true;
+      $('#appShell').hidden = false;
+      $('#userName').textContent = state.user?.name || 'Administrador';
+      $('#avatarLetter').textContent = (state.user?.name || 'AD').slice(0, 2).toUpperCase();
+      renderView();
+    }
+
+    // AUTH HANDLER
+    $('#authForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = $('#loginEmail').value.trim();
+      const password = $('#loginPassword').value.trim();
+      const errBox = $('#authError');
+      errBox.hidden = true;
+
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Verificando...';
+
+      try {
+        const res = await api('login', { email, password });
+        state.token = res.token;
+        state.user = res.user;
+        sessionStorage.setItem('nexo_token', state.token);
+        await loadBackendData();
+        showApp();
+      } catch (err) {
+        errBox.textContent = err.message;
+        errBox.hidden = false;
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = 'Entrar al Workspace <i class="bi bi-arrow-right"></i>';
+      }
+    });
+
+    $('#btnDemoLogin').addEventListener('click', () => {
+      state.demo = true;
+      state.user = { name: 'Usuario Demo', role: 'admin' };
+      state.contacts = [
+        { id: '1', name: 'Laura Gómez', company: 'Global Tech', email: 'laura@global.com', phone: '+54 11 4444 2222', status: 'Cliente' },
+        { id: '2', name: 'Carlos Díaz', company: 'Innovar SA', email: 'cdiaz@innovar.ar', phone: '+54 261 400 1122', status: 'Prospecto' }
+      ];
+      state.opportunities = [
+        { id: '101', title: 'Consultoría ERP Cloud', value: 850000, stage: 'Propuesta', probability: 50, owner: 'Usuario Demo' },
+        { id: '102', title: 'Infraestructura Redes', value: 340000, stage: 'Contactado', probability: 25, owner: 'Usuario Demo' }
+      ];
+      showApp();
+    });
+
+    $('#btnLogout').addEventListener('click', () => {
+      sessionStorage.removeItem('nexo_token');
+      location.reload();
+    });
+
+    $('#btnToggleTheme').addEventListener('click', () => {       state.theme = state.theme === 'dark' ? 'light' : 'dark';       applyTheme();     });      $$('.nav-link').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.view = btn.dataset.view;
+        renderView();
+      });
+    });
+
+    // COMMAND PALETTE
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        $('#cmdPalette').hidden = !$('#cmdPalette').hidden;
+      } else if (e.key === 'Escape') {
+        $('#cmdPalette').hidden = true;
+        $('#modalSlot').innerHTML = '';
+      }
+    });
+    $('#btnOpenCmd').addEventListener('click', () => $('#cmdPalette').hidden = false);
+    $('#cmdPalette').addEventListener('click', (e) => { if (e.target === $('#cmdPalette')) $('#cmdPalette').hidden = true; });
+
+    applyTheme();
   </script>
 </body>
 </html>
