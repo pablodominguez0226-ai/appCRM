@@ -67,7 +67,6 @@
     a { color: inherit; text-decoration: none; }
     [hidden] { display: none !important; }
 
-    /* AUTH SCREEN */
     .auth-wrap {
       min-height: 100vh;
       display: grid;
@@ -119,7 +118,6 @@
       border-radius: var(--radius-md); font-size: 13px; font-weight: 600;
     }
 
-    /* DASHBOARD SHELL */
     .app-shell { display: flex; min-height: 100vh; }
     .sidebar {
       width: var(--sidebar-w); background: var(--bg-surface); border-right: 1px solid var(--border);
@@ -172,7 +170,6 @@
     .section-title p { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
     .actions-row { display: flex; gap: 10px; flex-wrap: wrap; }
 
-    /* STATS GRID */
     .metrics-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 28px; }
     .metric-box {
       background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
@@ -181,7 +178,6 @@
     .metric-meta { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
     .metric-num { font-size: 28px; font-weight: 800; letter-spacing: -1px; }
 
-    /* KANBAN BOARD */
     .kanban-board {
       display: grid; grid-template-columns: repeat(5, minmax(280px, 1fr)); gap: 16px;
       overflow-x: auto; padding-bottom: 20px; align-items: flex-start;
@@ -200,7 +196,6 @@
     .deal-card h4 { font-size: 14px; font-weight: 700; line-height: 1.3; }
     .deal-val { font-size: 16px; font-weight: 800; color: var(--primary); }
 
-    /* DATA TABLES */
     .table-container {
       background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
       box-shadow: var(--shadow); overflow: hidden;
@@ -213,7 +208,6 @@
     td { padding: 16px 20px; border-top: 1px solid var(--border); font-size: 14px; }
     tr:hover td { background: var(--bg-subtle); }
 
-    /* MODAL */
     .modal-veil {
       position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px);
       z-index: 100; display: grid; place-items: center; padding: 20px;
@@ -226,7 +220,6 @@
     .modal-body { padding: 24px; display: flex; flex-direction: column; gap: 16px; max-height: 75vh; overflow-y: auto; }
     .modal-bottom { padding: 16px 24px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 10px; background: var(--bg-subtle); }
 
-    /* COMMAND PALETTE */
     .cmd-veil {
       position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(6px);
       z-index: 150; display: grid; place-items: start center; padding-top: 12vh;
@@ -246,7 +239,6 @@
     }
     .cmd-opt:hover { background: var(--primary-light); color: var(--primary); }
 
-    /* TOASTS */
     .toast-center { position: fixed; bottom: 24px; right: 24px; z-index: 200; display: flex; flex-direction: column; gap: 10px; }
     .toast-msg {
       background: var(--text-main); color: var(--bg-surface); padding: 12px 20px; border-radius: var(--radius-md);
@@ -260,7 +252,6 @@
 </head>
 <body>
 
-  <!-- LOGIN SECTION -->
   <section class="auth-wrap" id="authView">
     <div class="auth-card">
       <div class="auth-brand">
@@ -295,7 +286,6 @@
     </div>
   </section>
 
-  <!-- DASHBOARD SHELL -->
   <div class="app-shell" id="appShell" hidden>
     <aside class="sidebar">
       <div class="auth-brand">
@@ -306,8 +296,6 @@
         <button class="nav-link active" data-view="dashboard"><i class="bi bi-speedometer2"></i> Resumen</button>
         <button class="nav-link" data-view="pipeline"><i class="bi bi-kanban"></i> Pipeline de Ventas</button>
         <button class="nav-link" data-view="contacts"><i class="bi bi-people"></i> Contactos</button>
-        <button class="nav-link" data-view="followups"><i class="bi bi-calendar-check"></i> Seguimientos</button>
-        <button class="nav-link" data-view="quotes"><i class="bi bi-receipt"></i> Cotizaciones</button>
       </nav>
       <div class="sidebar-user">
         <div class="user-avatar" id="avatarLetter">PD</div>
@@ -334,7 +322,6 @@
     </main>
   </div>
 
-  <!-- COMMAND PALETTE -->
   <div class="cmd-veil" id="cmdPalette" hidden>
     <div class="cmd-box">
       <div class="cmd-input-wrap">
@@ -374,7 +361,8 @@
 
     function applyTheme() {
       document.documentElement.setAttribute('data-theme', state.theme);
-      $('#btnToggleTheme i').className = state.theme === 'dark' ? 'bi bi-sun' : 'bi bi-moon-stars';
+      const icon = $('#btnToggleTheme i');
+      if (icon) icon.className = state.theme === 'dark' ? 'bi bi-sun' : 'bi bi-moon-stars';
       localStorage.setItem('nexo_theme', state.theme);
     }
 
@@ -617,14 +605,26 @@
     }
 
     function exportContactsCSV() {
-      const headers = ['Nombre', 'Empresa', 'Email', 'Teléfono', 'Estado'];
-      const rows = state.contacts.map(c => [c.name, c.company, c.email, c.phone, c.status]);
-      const csv = [headers, ...rows].map(e => e.map(x => `"${(x||'').toString().replace(/"/g, '""')}"`).join(',')).join('\n');
-      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = `contactos_${new Date().toISOString().slice(0, 10)}.csv`;
-      a.click();
+      const headers = ['Nombre', 'Empresa', 'Email', 'Telefono', 'Estado'];
+      const rows = state.contacts.map(c => [
+        c.name || '',
+        c.company || '',
+        c.email || '',
+        c.phone || '',
+        c.status || ''
+      ]);
+      const content = [headers, ...rows].map(row =>
+        row.map(val => '"' + String(val).replace(/"/g, '""') + '"').join(',')
+      ).join('\r\n');
+
+      const blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', 'contactos_' + new Date().toISOString().slice(0, 10) + '.csv');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
 
     function showApp() {
@@ -635,7 +635,6 @@
       renderView();
     }
 
-    // AUTH HANDLER
     $('#authForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const email = $('#loginEmail').value.trim();
@@ -689,7 +688,6 @@
       });
     });
 
-    // COMMAND PALETTE
     window.addEventListener('keydown', (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
@@ -699,8 +697,19 @@
         $('#modalSlot').innerHTML = '';
       }
     });
+
     $('#btnOpenCmd').addEventListener('click', () => $('#cmdPalette').hidden = false);
-    $('#cmdPalette').addEventListener('click', (e) => { if (e.target === $('#cmdPalette')) $('#cmdPalette').hidden = true; });
+    $('#cmdPalette').addEventListener('click', (e) => { if (e.target === $('#cmdPalette')) $('#cmdPalette').hidden = true; });      $$('.cmd-opt').forEach(opt => {
+      opt.addEventListener('click', () => {
+        const act = opt.dataset.act;
+        $('#cmdPalette').hidden = true;
+        if (act === 'nav-dashboard') { state.view = 'dashboard'; renderView(); }
+        else if (act === 'nav-pipeline') { state.view = 'pipeline'; renderView(); }
+        else if (act === 'nav-contacts') { state.view = 'contacts'; renderView(); }
+        else if (act === 'modal-contact') { openContactModal(); }
+        else if (act === 'modal-opp') { openOppModal(); }
+      });
+    });
 
     applyTheme();
   </script>
