@@ -522,9 +522,11 @@
     }
 
     function renderView() {
-      const views = { dashboard: renderDashboard, pipeline: renderPipeline, contacts: renderContacts };
-      $('#mainContent').innerHTML = (views[state.view] \vert{}\vert{} views.dashboard)();       $$('.nav-link').forEach(btn => btn.classList.toggle('active', btn.dataset.view === state.view));
-    }
+  const views = { dashboard: renderDashboard, pipeline: renderPipeline, contacts: renderContacts };
+  const targetView = views[state.view] || views.dashboard;
+  $('#mainContent').innerHTML = targetView();
+  $$('.nav-link').forEach(btn => btn.classList.toggle('active', btn.dataset.view === state.view));
+}
 
     function dragOpp(e, id) { e.dataTransfer.setData('text/plain', id); }
     async function dropOpp(e, newStage) {
